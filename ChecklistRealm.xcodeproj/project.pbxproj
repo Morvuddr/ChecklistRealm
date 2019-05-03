@@ -1,0 +1,466 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		39AEFBB8613DEE2BC161F90E /* Pods_ChecklistRealm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 743F3C8E65CE6EA2FDC3C6F5 /* Pods_ChecklistRealm.framework */; };
+		CF003137227C9B5B002DA167 /* ChecklistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF003131227C9B5B002DA167 /* ChecklistViewController.swift */; };
+		CF003138227C9B5B002DA167 /* ChecklistViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF003132227C9B5B002DA167 /* ChecklistViewController.storyboard */; };
+		CF003139227C9B5B002DA167 /* ChecklistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF003133227C9B5B002DA167 /* ChecklistTableViewCell.swift */; };
+		CF00313A227C9B5B002DA167 /* AddItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF003135227C9B5B002DA167 /* AddItemTableViewController.swift */; };
+		CF00313B227C9B5B002DA167 /* AddItemTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF003136227C9B5B002DA167 /* AddItemTableViewController.storyboard */; };
+		CF003141227C9BD7002DA167 /* ChecklistFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF00313E227C9BD7002DA167 /* ChecklistFunctions.swift */; };
+		CF003142227C9BD7002DA167 /* ChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF00313F227C9BD7002DA167 /* ChecklistItem.swift */; };
+		CF003143227C9BD7002DA167 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF003140227C9BD7002DA167 /* Data.swift */; };
+		CFAA555C227C902100960651 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAA555B227C902100960651 /* AppDelegate.swift */; };
+		CFAA5563227C902200960651 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFAA5562227C902200960651 /* Assets.xcassets */; };
+		CFAA5566227C902200960651 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFAA5564227C902200960651 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		4DCED3D05912351CA6E9F5F0 /* Pods-ChecklistRealm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChecklistRealm.release.xcconfig"; path = "Target Support Files/Pods-ChecklistRealm/Pods-ChecklistRealm.release.xcconfig"; sourceTree = "<group>"; };
+		663DDBDF91003D81AD6A6C6B /* Pods-ChecklistRealm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChecklistRealm.debug.xcconfig"; path = "Target Support Files/Pods-ChecklistRealm/Pods-ChecklistRealm.debug.xcconfig"; sourceTree = "<group>"; };
+		743F3C8E65CE6EA2FDC3C6F5 /* Pods_ChecklistRealm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChecklistRealm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF003131227C9B5B002DA167 /* ChecklistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChecklistViewController.swift; sourceTree = "<group>"; };
+		CF003132227C9B5B002DA167 /* ChecklistViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChecklistViewController.storyboard; sourceTree = "<group>"; };
+		CF003133227C9B5B002DA167 /* ChecklistTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChecklistTableViewCell.swift; sourceTree = "<group>"; };
+		CF003135227C9B5B002DA167 /* AddItemTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemTableViewController.swift; sourceTree = "<group>"; };
+		CF003136227C9B5B002DA167 /* AddItemTableViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddItemTableViewController.storyboard; sourceTree = "<group>"; };
+		CF00313E227C9BD7002DA167 /* ChecklistFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChecklistFunctions.swift; sourceTree = "<group>"; };
+		CF00313F227C9BD7002DA167 /* ChecklistItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChecklistItem.swift; sourceTree = "<group>"; };
+		CF003140227C9BD7002DA167 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		CFAA5558227C902100960651 /* ChecklistRealm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChecklistRealm.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFAA555B227C902100960651 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CFAA5562227C902200960651 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CFAA5565227C902200960651 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CFAA5567227C902200960651 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CFAA5555227C902100960651 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39AEFBB8613DEE2BC161F90E /* Pods_ChecklistRealm.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		620F5853B63B373439D9774D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				663DDBDF91003D81AD6A6C6B /* Pods-ChecklistRealm.debug.xcconfig */,
+				4DCED3D05912351CA6E9F5F0 /* Pods-ChecklistRealm.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		981A8D01B28ADD85FD5376E9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				743F3C8E65CE6EA2FDC3C6F5 /* Pods_ChecklistRealm.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CF00312F227C9B5B002DA167 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CF003130227C9B5B002DA167 /* ChecklistViewController */,
+				CF003134227C9B5B002DA167 /* AddNewItemViewController */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CF003130227C9B5B002DA167 /* ChecklistViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CF003132227C9B5B002DA167 /* ChecklistViewController.storyboard */,
+				CF003131227C9B5B002DA167 /* ChecklistViewController.swift */,
+				CF003133227C9B5B002DA167 /* ChecklistTableViewCell.swift */,
+			);
+			path = ChecklistViewController;
+			sourceTree = "<group>";
+		};
+		CF003134227C9B5B002DA167 /* AddNewItemViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CF003135227C9B5B002DA167 /* AddItemTableViewController.swift */,
+				CF003136227C9B5B002DA167 /* AddItemTableViewController.storyboard */,
+			);
+			path = AddNewItemViewController;
+			sourceTree = "<group>";
+		};
+		CF00313D227C9BD7002DA167 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CF00313E227C9BD7002DA167 /* ChecklistFunctions.swift */,
+				CF00313F227C9BD7002DA167 /* ChecklistItem.swift */,
+				CF003140227C9BD7002DA167 /* Data.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CFAA554F227C902100960651 = {
+			isa = PBXGroup;
+			children = (
+				CFAA555A227C902100960651 /* ChecklistRealm */,
+				CFAA5559227C902100960651 /* Products */,
+				620F5853B63B373439D9774D /* Pods */,
+				981A8D01B28ADD85FD5376E9 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		CFAA5559227C902100960651 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CFAA5558227C902100960651 /* ChecklistRealm.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CFAA555A227C902100960651 /* ChecklistRealm */ = {
+			isa = PBXGroup;
+			children = (
+				CFAA555B227C902100960651 /* AppDelegate.swift */,
+				CFAA5562227C902200960651 /* Assets.xcassets */,
+				CFAA5567227C902200960651 /* Info.plist */,
+				CFAA5564227C902200960651 /* LaunchScreen.storyboard */,
+				CF00313D227C9BD7002DA167 /* Model */,
+				CF00312F227C9B5B002DA167 /* Views */,
+			);
+			path = ChecklistRealm;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CFAA5557227C902100960651 /* ChecklistRealm */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CFAA556A227C902200960651 /* Build configuration list for PBXNativeTarget "ChecklistRealm" */;
+			buildPhases = (
+				AB4FE1C97224291C8332661D /* [CP] Check Pods Manifest.lock */,
+				CFAA5554227C902100960651 /* Sources */,
+				CFAA5555227C902100960651 /* Frameworks */,
+				CFAA5556227C902100960651 /* Resources */,
+				24650EC9DB10BE8BBBB9BCA3 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ChecklistRealm;
+			productName = ChecklistRealm;
+			productReference = CFAA5558227C902100960651 /* ChecklistRealm.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CFAA5550227C902100960651 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = Igor;
+				TargetAttributes = {
+					CFAA5557227C902100960651 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+				};
+			};
+			buildConfigurationList = CFAA5553227C902100960651 /* Build configuration list for PBXProject "ChecklistRealm" */;
+			compatibilityVersion = "Xcode 10.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CFAA554F227C902100960651;
+			productRefGroup = CFAA5559227C902100960651 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CFAA5557227C902100960651 /* ChecklistRealm */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CFAA5556227C902100960651 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CFAA5566227C902200960651 /* LaunchScreen.storyboard in Resources */,
+				CFAA5563227C902200960651 /* Assets.xcassets in Resources */,
+				CF003138227C9B5B002DA167 /* ChecklistViewController.storyboard in Resources */,
+				CF00313B227C9B5B002DA167 /* AddItemTableViewController.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		24650EC9DB10BE8BBBB9BCA3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ChecklistRealm/Pods-ChecklistRealm-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ChecklistRealm/Pods-ChecklistRealm-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AB4FE1C97224291C8332661D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ChecklistRealm-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CFAA5554227C902100960651 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF003143227C9BD7002DA167 /* Data.swift in Sources */,
+				CF00313A227C9B5B002DA167 /* AddItemTableViewController.swift in Sources */,
+				CF003142227C9BD7002DA167 /* ChecklistItem.swift in Sources */,
+				CFAA555C227C902100960651 /* AppDelegate.swift in Sources */,
+				CF003137227C9B5B002DA167 /* ChecklistViewController.swift in Sources */,
+				CF003141227C9BD7002DA167 /* ChecklistFunctions.swift in Sources */,
+				CF003139227C9B5B002DA167 /* ChecklistTableViewCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CFAA5564227C902200960651 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CFAA5565227C902200960651 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CFAA5568227C902200960651 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CFAA5569227C902200960651 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CFAA556B227C902200960651 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 663DDBDF91003D81AD6A6C6B /* Pods-ChecklistRealm.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 99T3A45NBN;
+				INFOPLIST_FILE = ChecklistRealm/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Igor.ChecklistRealm;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CFAA556C227C902200960651 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4DCED3D05912351CA6E9F5F0 /* Pods-ChecklistRealm.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 99T3A45NBN;
+				INFOPLIST_FILE = ChecklistRealm/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Igor.ChecklistRealm;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CFAA5553227C902100960651 /* Build configuration list for PBXProject "ChecklistRealm" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CFAA5568227C902200960651 /* Debug */,
+				CFAA5569227C902200960651 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CFAA556A227C902200960651 /* Build configuration list for PBXNativeTarget "ChecklistRealm" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CFAA556B227C902200960651 /* Debug */,
+				CFAA556C227C902200960651 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CFAA5550227C902100960651 /* Project object */;
+}
