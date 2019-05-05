@@ -8,61 +8,109 @@
 
 import UIKit
 import Foundation
+import RealmSwift
 
 class ChecklistFunctions {
     
+    private init(){}
+    static let shared = ChecklistFunctions()
     
-    static func createChecklistItem(_ checklistItem: ChecklistItem){
-
-            Data.checklistItems.insert(checklistItem, at: 0)
-       
-    }
+    var realm = try! Realm()
     
-    static func readChecklist(completion: @escaping () -> ()){
-        
-        
-    }
     
-    static func updateChecklistItem(at index: Int, title: String, additionalInfo: String){
+    func createData(){
         
-        Data.checklistItems[index].title = title
-        Data.checklistItems[index].additionalInfo = additionalInfo
+        let data = Data()
         
-    }
-    
-    static func deleteChecklistItem(at index: Int){
-        
-
-                Data.checklistItems.remove(at: index)
-        
-        
-    }
-    
-    static func sortChecklistItems(){
-        
-        Data.checklistItems.sort(){
-            $0.date > $1.date
-        }
-        
-        Data.checklistItems.sort() {
-            !$0.checked && $1.checked
-        }
-        
-    }
-    
-    static func toggleChecked(at index: Int){
-        Data.checklistItems[index].checked = !Data.checklistItems[index].checked
-    }
-    
-    // MARK: - Data update every 30 seconds
-    
-    static func startTimer(){
-        _ = Timer.scheduledTimer(withTimeInterval: 30, repeats: true) { (Timer) in
+        do {
             
-            sortChecklistItems()
+            try realm.write{
+                realm.add(data)
+            }
             
+        } catch {
+            print(error)
         }
+        
     }
     
+    func createChecklistItem(_ data: Data,_ checklistItem: ChecklistItem){
+        
+        do {
+            
+            try realm.write{
+                data.checklistItems.insert(checklistItem, at: 0)
+            }
+            
+        } catch {
+            print(error)
+        }
+        
+    }
+    
+    func updateChecklistItem(at index: Int, title: String, additionalInfo: String, in data: Data){
+        
+        do {
+            try realm.write{
+                
+                data.checklistItems[index].title = title
+                data.checklistItems[index].additionalInfo = additionalInfo
+                
+            }
+        } catch {
+            print(error)
+        }
+        
+    }
+    
+    func deleteChecklistItem(at index: Int, in data: Data){
+        
+        do {
+            try realm.write{
+                
+                data.checklistItems.remove(at: index)
+                
+            }
+        } catch {
+            print(error)
+        }
+        
+    }
+    
+    func sortChecklistItems(in data: Data){
+        
+        do {
+            try realm.write{
+                
+                data.checklistItems.sort(){
+                    $0.date > $1.date
+                }
+                
+                data.checklistItems.sort() {
+                    !$0.checked && $1.checked
+                }
+                
+            }
+        } catch {
+            print(error)
+        }
+        
+        
+        
+    }
+    
+    func toggleChecked(at index: Int, in data: Data){
+        
+        do {
+            try realm.write{
+                
+                data.checklistItems[index].checked = !data.checklistItems[index].checked
+                
+            }
+        } catch {
+            print(error)
+        }
+        
+    }
     
 }

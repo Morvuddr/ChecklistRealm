@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import RealmSwift
 
-class Data {
+class Data: Object {
     
-    static var checklistItems = [ChecklistItem]()
+    var checklistItems = List<ChecklistItem>()
     
 }

@@ -7,16 +7,18 @@
 //
 
 import Foundation
+import RealmSwift
 
-class ChecklistItem: NSObject {
+@objcMembers class ChecklistItem: Object {
     
-    var title: String
-    var date: String
-    var additionalInfo: String?
-    var checked: Bool
+    dynamic var title: String = ""
+    dynamic var date: String = ""
+    dynamic var additionalInfo: String? = nil
+    dynamic var checked: Bool = false
     
     
-    init(_ title: String, _ date: String, _ additionalInfo: String? = nil, _ checked: Bool = false) {
+    convenience init(_ title: String, _ date: String, _ additionalInfo: String? = nil, _ checked: Bool = false) {
+        self.init()
         self.title = title
         self.date = date
         self.additionalInfo = additionalInfo

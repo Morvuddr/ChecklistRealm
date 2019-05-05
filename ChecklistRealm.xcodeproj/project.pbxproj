@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -100,9 +100,9 @@
 		CF00313D227C9BD7002DA167 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CF00313E227C9BD7002DA167 /* ChecklistFunctions.swift */,
-				CF00313F227C9BD7002DA167 /* ChecklistItem.swift */,
 				CF003140227C9BD7002DA167 /* Data.swift */,
+				CF00313F227C9BD7002DA167 /* ChecklistItem.swift */,
+				CF00313E227C9BD7002DA167 /* ChecklistFunctions.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -176,7 +176,7 @@
 				};
 			};
 			buildConfigurationList = CFAA5553227C902100960651 /* Build configuration list for PBXProject "ChecklistRealm" */;
-			compatibilityVersion = "Xcode 10.0";
+			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (

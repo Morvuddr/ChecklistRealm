@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 protocol AddItemTableViewControllerDelegate: class {
     func addItemTableViewControllerDidCancel(_ controller: AddItemTableViewController)
@@ -24,13 +25,14 @@ class AddItemTableViewController: UITableViewController {
     @IBOutlet weak var doneBarItem: UIBarButtonItem!
     
     var itemToEdit: ChecklistItem?
+    var indexToEdit: Int?
     
     weak var delegate: AddItemTableViewControllerDelegate?
+    var data: Data?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
+    
         if let item = itemToEdit {
             title = "Подробно"
             titleTextField.text = item.title
@@ -52,8 +54,8 @@ class AddItemTableViewController: UITableViewController {
     }
     @IBAction func done() {
         if let itemToEdit = itemToEdit {
-            let index = Data.checklistItems.firstIndex(of: itemToEdit)!
-            ChecklistFunctions.updateChecklistItem(at: index, title: titleTextField.text!,additionalInfo: additionalInfoTextView.text)
+            
+            ChecklistFunctions.shared.updateChecklistItem(at: indexToEdit!, title: titleTextField.text!,additionalInfo: additionalInfoTextView.text, in: data!)
             delegate?.addItemTableViewController(self, didFinishEditing: itemToEdit)
             
         } else {
