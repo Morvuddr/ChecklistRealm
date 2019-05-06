@@ -83,7 +83,7 @@ class ChecklistFunctions {
             try realm.write{
                 
                 data.checklistItems.sort(){
-                    $0.date > $1.date
+                    $0.date.timeIntervalSince1970 > $1.date.timeIntervalSince1970
                 }
                 
                 data.checklistItems.sort() {

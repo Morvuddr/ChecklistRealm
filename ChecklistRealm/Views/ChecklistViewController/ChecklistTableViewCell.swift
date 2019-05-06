@@ -17,7 +17,7 @@ class ChecklistTableViewCell: UITableViewCell {
     
     func setup(_ checklistItem: ChecklistItem){
         checklistTitle.text = checklistItem.title
-        checklistDate.text = checklistItem.date
+        checklistDate.text = checklistItem.dateStr
         if let additionalInfo = checklistItem.additionalInfo {
             checklistAdditionalInfo.text = additionalInfo
         }

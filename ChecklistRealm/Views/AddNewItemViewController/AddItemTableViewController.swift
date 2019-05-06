@@ -22,6 +22,7 @@ class AddItemTableViewController: UITableViewController {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var additionalInfoTextView: UITextView!
     @IBOutlet weak var dateLabel: UILabel!
+    var currentDate: Date?
     @IBOutlet weak var doneBarItem: UIBarButtonItem!
     
     var itemToEdit: ChecklistItem?
@@ -37,7 +38,7 @@ class AddItemTableViewController: UITableViewController {
             title = "Подробно"
             titleTextField.text = item.title
             additionalInfoTextView.text = item.additionalInfo
-            dateLabel.text = item.date
+            dateLabel.text = item.dateStr
             doneBarItem.isEnabled = true
         } else {
             dateLabel.text = createDate()
@@ -59,7 +60,7 @@ class AddItemTableViewController: UITableViewController {
             delegate?.addItemTableViewController(self, didFinishEditing: itemToEdit)
             
         } else {
-            let item = ChecklistItem(titleTextField.text!, dateLabel.text!, additionalInfoTextView.text)
+            let item = ChecklistItem(titleTextField.text!, currentDate!, dateLabel.text!, additionalInfoTextView.text)
             delegate?.addItemTableViewController(self, didFinishAdding: item)
         }
     }
@@ -67,7 +68,7 @@ class AddItemTableViewController: UITableViewController {
     func createDate() -> String {
         // get the current date and time
         let currentDateTime = Date()
-        
+        self.currentDate = currentDateTime
         // initialize the date formatter and set the style
         let formatter = DateFormatter()
         formatter.timeStyle = .medium
