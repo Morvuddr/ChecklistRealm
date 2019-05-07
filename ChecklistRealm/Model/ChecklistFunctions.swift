@@ -15,7 +15,11 @@ class ChecklistFunctions {
     private init(){}
     static let shared = ChecklistFunctions()
     
-    var realm = try! Realm()
+    lazy var realm: Realm = {
+        return try! Realm()
+    }()
+    
+    var currentSchemaVersion: UInt64 = 1
     
     
     func createData(){
@@ -111,6 +115,27 @@ class ChecklistFunctions {
             print(error)
         }
         
+    }
+    
+    // MARK: - Migrations
+    
+    func configureMigration() {
+  
+        let config = Realm.Configuration(schemaVersion: currentSchemaVersion,
+                                         migrationBlock: { (migration, oldSchemaVersion) in
+            if oldSchemaVersion < 1 {
+                self.migrateFrom0To1(with: migration)
+            }
+            
+        })
+        Realm.Configuration.defaultConfiguration = config
+    }
+    
+    func migrateFrom0To1(with migration: Migration){
+        migration.enumerateObjects(ofType: ChecklistItem.className()) { (_, newChecklistItem) in
+            newChecklistItem?["latitude"] = Double(0)
+            newChecklistItem?["longitude"] = Double(0)
+        }
     }
     
 }
