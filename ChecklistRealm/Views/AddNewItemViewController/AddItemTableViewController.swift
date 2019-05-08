@@ -9,6 +9,7 @@
 import UIKit
 import RealmSwift
 import CoreLocation
+import MapKit
 
 protocol AddItemTableViewControllerDelegate: class {
     func addItemTableViewControllerDidCancel(_ controller: AddItemTableViewController)
@@ -21,6 +22,7 @@ class AddItemTableViewController: UITableViewController {
     
     
     @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var additionalInfoTextView: UITextView!
     @IBOutlet weak var dateLabel: UILabel!
     var currentDate: Date?
@@ -34,10 +36,15 @@ class AddItemTableViewController: UITableViewController {
     
     let locationManager = CLLocationManager()
     var location = CLLocationCoordinate2D(latitude: CLLocationDegrees(0), longitude: CLLocationDegrees(0))
+    let annotation = MKPointAnnotation()
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
+        
         if let item = itemToEdit {
             title = "Подробно"
             titleTextField.text = item.title
@@ -45,9 +52,11 @@ class AddItemTableViewController: UITableViewController {
             dateLabel.text = item.dateStr
             doneBarItem.isEnabled = true
             location = CLLocationCoordinate2D(latitude: item.latitude, longitude: item.longitude)
+            centerViewOnItemLocation()
         } else {
             dateLabel.text = createDate()
             checkLocationServices()
+            centerViewOnItemLocation()
         }
     }
     
@@ -57,9 +66,11 @@ class AddItemTableViewController: UITableViewController {
     }
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
+        mapView.removeAnnotation(annotation)
         delegate?.addItemTableViewControllerDidCancel(self)
     }
     @IBAction func done() {
+        mapView.removeAnnotation(annotation)
         if let itemToEdit = itemToEdit {
             
             ChecklistFunctions.shared.updateChecklistItem(at: indexToEdit!, title: titleTextField.text!,additionalInfo: additionalInfoTextView.text, in: data!)
@@ -117,8 +128,10 @@ extension AddItemTableViewController: UITextFieldDelegate {
 extension AddItemTableViewController: UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
-        tableView.beginUpdates()
-        tableView.endUpdates()
+        DispatchQueue.main.async {
+            self.tableView.beginUpdates()
+            self.tableView.endUpdates()
+        }
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
@@ -138,37 +151,83 @@ extension AddItemTableViewController: UITextViewDelegate {
 
 extension AddItemTableViewController {
     
+    func centerViewOnItemLocation(){
+        let region = MKCoordinateRegion(center: location, latitudinalMeters: 150, longitudinalMeters: 150)
+        annotation.coordinate = location
+        mapView.addAnnotation(annotation)
+        mapView.setRegion(region, animated: true)
+    }
+    
     func checkLocationServices(){
         if CLLocationManager.locationServicesEnabled(){
             setupLocationManager()
             checkLocationAuthorization()
         } else {
             
+            if !UserDefaults.standard.bool(forKey: "locationOff"){
+            let alert = UIAlertController(title: "Службы геолокации отключены", message: "Пожалуйста, перейдите в Настройки, чтобы изменить это.", preferredStyle: .alert)
+            
+            let okButton = UIAlertAction(title: "Понятно", style: .default, handler: nil)
+            alert.addAction(okButton)
+            UserDefaults.standard.set(true, forKey: "locationOff")
+            self.present(alert, animated: true)
+            }
         }
     }
     
     func setupLocationManager(){
-        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
     
     func checkLocationAuthorization(){
         switch CLLocationManager.authorizationStatus() {
         case .notDetermined:
+            
             locationManager.requestWhenInUseAuthorization()
-            break
+            
         case .restricted:
-            break
+            
+            if !UserDefaults.standard.bool(forKey: "locationRestricted"){
+            
+            let alert = UIAlertController(title: "Использование геопозиции ограничено", message: "Доступ к геопозиции ограничен и локация не может быть получена", preferredStyle: .alert)
+            
+            let okButton = UIAlertAction(title: "Понятно", style: .default, handler: nil)
+            alert.addAction(okButton)
+            
+            UserDefaults.standard.set(true, forKey: "locationRestricted")
+            self.present(alert, animated: true)
+                
+            }
+            
         case .denied:
-            // add alert
-            break
+            
+            if !UserDefaults.standard.bool(forKey: "locationDenied"){
+            
+            let alert = UIAlertController(title: "Доступ к геопозиции запрещен", message: "Запрос на доступ к геопозиции был отклонен. Пожалуйста, перейдите в Настройки, чтобы изменить это.", preferredStyle: .alert)
+            
+            let goToSettingsAction = UIAlertAction(title: "Перейти в настройки", style: .default) {
+                (action) in
+                DispatchQueue.main.async{
+                    let url = URL(string: UIApplication.openSettingsURLString)!
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                }
+            }
+            let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
+            
+            alert.addAction(goToSettingsAction)
+            alert.addAction(cancelAction)
+            
+            UserDefaults.standard.set(true, forKey: "locationDenied")
+            self.present(alert, animated: true)
+                
+            }
+            
         case .authorizedAlways:
             break
         case .authorizedWhenInUse:
             if let location = locationManager.location?.coordinate {
                 self.location = location
-                print(self.location)
             }
-            break
         @unknown default:
             break
         }
