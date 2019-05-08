@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import CoreLocation
 
 protocol AddItemTableViewControllerDelegate: class {
     func addItemTableViewControllerDidCancel(_ controller: AddItemTableViewController)
@@ -31,6 +32,9 @@ class AddItemTableViewController: UITableViewController {
     weak var delegate: AddItemTableViewControllerDelegate?
     var data: Data?
     
+    let locationManager = CLLocationManager()
+    var location = CLLocationCoordinate2D(latitude: CLLocationDegrees(0), longitude: CLLocationDegrees(0))
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -40,8 +44,10 @@ class AddItemTableViewController: UITableViewController {
             additionalInfoTextView.text = item.additionalInfo
             dateLabel.text = item.dateStr
             doneBarItem.isEnabled = true
+            location = CLLocationCoordinate2D(latitude: item.latitude, longitude: item.longitude)
         } else {
             dateLabel.text = createDate()
+            checkLocationServices()
         }
     }
     
@@ -60,7 +66,7 @@ class AddItemTableViewController: UITableViewController {
             delegate?.addItemTableViewController(self, didFinishEditing: itemToEdit)
             
         } else {
-            let item = ChecklistItem(titleTextField.text!, currentDate!, dateLabel.text!, additionalInfoTextView.text)
+            let item = ChecklistItem(titleTextField.text!, currentDate!, dateLabel.text!, additionalInfoTextView.text, false, location.latitude, location.longitude)
             delegate?.addItemTableViewController(self, didFinishAdding: item)
         }
     }
@@ -126,6 +132,46 @@ extension AddItemTableViewController: UITextViewDelegate {
             doneBarItem.isEnabled = true
         }
         return newText.count <= maxLength
+    }
+    
+}
+
+extension AddItemTableViewController {
+    
+    func checkLocationServices(){
+        if CLLocationManager.locationServicesEnabled(){
+            setupLocationManager()
+            checkLocationAuthorization()
+        } else {
+            
+        }
+    }
+    
+    func setupLocationManager(){
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+    }
+    
+    func checkLocationAuthorization(){
+        switch CLLocationManager.authorizationStatus() {
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+            break
+        case .restricted:
+            break
+        case .denied:
+            // add alert
+            break
+        case .authorizedAlways:
+            break
+        case .authorizedWhenInUse:
+            if let location = locationManager.location?.coordinate {
+                self.location = location
+                print(self.location)
+            }
+            break
+        @unknown default:
+            break
+        }
     }
     
 }
