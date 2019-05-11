@@ -91,8 +91,8 @@
 		CF003134227C9B5B002DA167 /* AddNewItemViewController */ = {
 			isa = PBXGroup;
 			children = (
-				CF003135227C9B5B002DA167 /* AddItemTableViewController.swift */,
 				CF003136227C9B5B002DA167 /* AddItemTableViewController.storyboard */,
+				CF003135227C9B5B002DA167 /* AddItemTableViewController.swift */,
 			);
 			path = AddNewItemViewController;
 			sourceTree = "<group>";

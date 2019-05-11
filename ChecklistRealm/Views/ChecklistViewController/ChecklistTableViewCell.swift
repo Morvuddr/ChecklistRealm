@@ -17,7 +17,7 @@ class ChecklistTableViewCell: UITableViewCell {
     
     func setup(_ checklistItem: ChecklistItem){
         checklistTitle.text = checklistItem.title
-        checklistDate.text = checklistItem.dateStr
+        checklistDate.text = createStringFromDate(checklistItem.date)
         if let additionalInfo = checklistItem.additionalInfo {
             checklistAdditionalInfo.text = additionalInfo
         }
@@ -26,6 +26,18 @@ class ChecklistTableViewCell: UITableViewCell {
         } else {
             checkmark.text = ""
         }
+    }
+    
+    func createStringFromDate(_ date: Date) -> String {
+        
+        // initialize the date formatter and set the style
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        formatter.dateStyle = .long
+        formatter.locale = Locale(identifier: "ru_RU")
+        
+        // get the date time String from the date object
+        return formatter.string(from: date)
     }
     
 }

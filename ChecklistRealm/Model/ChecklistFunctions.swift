@@ -19,7 +19,7 @@ class ChecklistFunctions {
         return try! Realm()
     }()
     
-    var currentSchemaVersion: UInt64 = 1
+    var currentSchemaVersion: UInt64 = 2
     
     
     func createData(){
@@ -52,13 +52,15 @@ class ChecklistFunctions {
         
     }
     
-    func updateChecklistItem(at index: Int, title: String, additionalInfo: String, in data: Data){
+    func updateChecklistItem(at index: Int, title: String, additionalInfo: String, dueDate: Date?, shouldRemind: Bool, in data: Data){
         
         do {
             try realm.write{
                 
                 data.checklistItems[index].title = title
                 data.checklistItems[index].additionalInfo = additionalInfo
+                data.checklistItems[index].dueDate = dueDate
+                data.checklistItems[index].shouldRemind = shouldRemind
                 
             }
         } catch {
@@ -123,10 +125,14 @@ class ChecklistFunctions {
   
         let config = Realm.Configuration(schemaVersion: currentSchemaVersion,
                                          migrationBlock: { (migration, oldSchemaVersion) in
-            if oldSchemaVersion < 1 {
-                self.migrateFrom0To1(with: migration)
-            }
-            
+                                            if oldSchemaVersion < 1 {
+                                                self.migrateFrom0To1(with: migration)
+                                            }
+                                            
+                                            if oldSchemaVersion < 2{
+                                                self.migrateFrom1To2(with: migration)
+                                            }
+                                            
         })
         Realm.Configuration.defaultConfiguration = config
     }
@@ -135,6 +141,15 @@ class ChecklistFunctions {
         migration.enumerateObjects(ofType: ChecklistItem.className()) { (_, newChecklistItem) in
             newChecklistItem?["latitude"] = Double(0)
             newChecklistItem?["longitude"] = Double(0)
+        }
+    }
+    
+    func migrateFrom1To2(with migration: Migration){
+        migration.enumerateObjects(ofType: ChecklistItem.className()) { (oldChecklistItem, newChecklistItem) in
+            let date: Date? = nil
+            newChecklistItem?["itemID"] = UUID().uuidString
+            newChecklistItem?["dueDate"] = date
+            newChecklistItem?["shouldRemind"] = false
         }
     }
     
