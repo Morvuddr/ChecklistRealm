@@ -13,7 +13,7 @@
         <scene sceneID="9LO-vl-4Kk">
             <objects>
                 <tableViewController id="wLN-az-CmF" customClass="AddItemTableViewController" customModule="ChecklistRealm" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="h6S-Oh-gcF">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="h6S-Oh-gcF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -39,9 +39,10 @@
                                                 </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="n9R-v0-gLo" secondAttribute="trailing" id="dPm-g5-mhk"/>
-                                                <constraint firstItem="n9R-v0-gLo" firstAttribute="leading" secondItem="2EV-GT-PDL" secondAttribute="leadingMargin" id="mt0-G1-IKE"/>
-                                                <constraint firstItem="n9R-v0-gLo" firstAttribute="centerY" secondItem="2EV-GT-PDL" secondAttribute="centerY" id="uJD-7F-Tio"/>
+                                                <constraint firstItem="n9R-v0-gLo" firstAttribute="top" secondItem="2EV-GT-PDL" secondAttribute="topMargin" id="AWT-fm-ZX5"/>
+                                                <constraint firstItem="n9R-v0-gLo" firstAttribute="bottom" secondItem="2EV-GT-PDL" secondAttribute="bottomMargin" id="Pqy-HP-Qe7"/>
+                                                <constraint firstItem="n9R-v0-gLo" firstAttribute="leading" secondItem="2EV-GT-PDL" secondAttribute="leadingMargin" id="d5N-qI-DhK"/>
+                                                <constraint firstItem="n9R-v0-gLo" firstAttribute="trailing" secondItem="2EV-GT-PDL" secondAttribute="trailingMargin" id="mht-n4-E0I"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -64,9 +65,10 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="3QZ-oc-0ic" firstAttribute="leading" secondItem="zFb-7C-bhB" secondAttribute="leadingMargin" id="0Ou-zY-M8t"/>
-                                                <constraint firstItem="3QZ-oc-0ic" firstAttribute="trailing" secondItem="zFb-7C-bhB" secondAttribute="trailingMargin" id="K9d-hC-krU"/>
-                                                <constraint firstItem="3QZ-oc-0ic" firstAttribute="centerY" secondItem="zFb-7C-bhB" secondAttribute="centerY" id="zZX-Qt-BAo"/>
+                                                <constraint firstItem="3QZ-oc-0ic" firstAttribute="trailing" secondItem="zFb-7C-bhB" secondAttribute="trailingMargin" id="WTW-6N-Ug7"/>
+                                                <constraint firstItem="3QZ-oc-0ic" firstAttribute="leading" secondItem="zFb-7C-bhB" secondAttribute="leadingMargin" id="WxY-5g-Efu"/>
+                                                <constraint firstItem="3QZ-oc-0ic" firstAttribute="top" secondItem="zFb-7C-bhB" secondAttribute="topMargin" id="fTq-f0-gNy"/>
+                                                <constraint firstItem="3QZ-oc-0ic" firstAttribute="bottom" secondItem="zFb-7C-bhB" secondAttribute="bottomMargin" id="hKC-Wd-SEt"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -118,8 +120,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" scrollEnabled="NO" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="MiW-Q7-LFw">
-                                                    <rect key="frame" x="11" y="36" width="343" height="28"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MiW-Q7-LFw" customClass="ZeroPaddingTextView" customModule="ChecklistRealm" customModuleProvider="target">
+                                                    <rect key="frame" x="16" y="36" width="343" height="37.5"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -132,12 +134,11 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="MiW-Q7-LFw" firstAttribute="top" secondItem="Xsn-dA-EBH" secondAttribute="bottom" constant="5" id="LrA-pF-DU5"/>
-                                                <constraint firstItem="MiW-Q7-LFw" firstAttribute="trailing" secondItem="w1k-LV-8cW" secondAttribute="trailingMargin" constant="-5" id="Nbp-OG-TNn"/>
+                                                <constraint firstItem="MiW-Q7-LFw" firstAttribute="trailing" secondItem="w1k-LV-8cW" secondAttribute="trailingMargin" id="Nbp-OG-TNn"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Xsn-dA-EBH" secondAttribute="trailing" id="eiA-Xp-rQD"/>
                                                 <constraint firstItem="Xsn-dA-EBH" firstAttribute="leading" secondItem="w1k-LV-8cW" secondAttribute="leadingMargin" id="jDt-Dj-SvP"/>
-                                                <constraint firstItem="MiW-Q7-LFw" firstAttribute="leading" secondItem="w1k-LV-8cW" secondAttribute="leadingMargin" constant="-5" id="ofp-hP-bDx"/>
+                                                <constraint firstItem="MiW-Q7-LFw" firstAttribute="leading" secondItem="w1k-LV-8cW" secondAttribute="leadingMargin" id="ofp-hP-bDx"/>
                                                 <constraint firstItem="Xsn-dA-EBH" firstAttribute="top" secondItem="w1k-LV-8cW" secondAttribute="topMargin" id="ovp-yg-7HJ"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="MiW-Q7-LFw" secondAttribute="bottom" id="thy-mT-FQJ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -109,7 +109,9 @@ static RLMSyncConnectionState convertConnectionState(SyncSession::ConnectionStat
         // No need to save the token as RLMSyncSession always outlives the
         // underlying SyncSession
         session->register_connection_change_callback([=](auto, auto newState) {
-            self.connectionState = convertConnectionState(newState);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.connectionState = convertConnectionState(newState);
+            });
         });
         return self;
     }
@@ -221,8 +223,7 @@ static RLMSyncConnectionState convertConnectionState(SyncSession::ConnectionStat
     if (!config) {
         return nil;
     }
-    auto path = SyncManager::shared().path_for_realm(*config->user, config->realm_url());
-    if (auto session = config->user->session_for_on_disk_path(path)) {
+    if (auto session = config->user->session_for_on_disk_path(realm->_realm->config().path)) {
         return [[RLMSyncSession alloc] initWithSyncSession:session];
     }
     return nil;

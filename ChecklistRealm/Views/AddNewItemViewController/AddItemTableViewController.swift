@@ -38,12 +38,24 @@ class AddItemTableViewController: UITableViewController {
     var location = CLLocationCoordinate2D(latitude: CLLocationDegrees(0), longitude: CLLocationDegrees(0))
     let annotation = MKPointAnnotation()
     
+    var currentRowHeight: CGFloat = 75 {
+        didSet{
+            if oldValue - currentRowHeight > 100{
+                DispatchQueue.main.async {
+                    self.tableView.scrollToRow(at: IndexPath(row: 0, section: 3), at: .bottom, animated: false)
+                }
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
+        
+        tableView.rowHeight = UITableView.automaticDimension
         
         if let item = itemToEdit {
             title = "Подробно"
@@ -97,11 +109,13 @@ class AddItemTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-    }
-    override func tableView(_ tableView: UITableView,
-                            estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 75
+        if indexPath.section == 3 {
+            
+            let rowHeight = additionalInfoTextView.text.heightWithConstrainedWidth(width: tableView.frame.width - 32, font: UIFont.systemFont(ofSize: 18)) + 47
+            currentRowHeight = rowHeight
+            return rowHeight
+        }
+        return super.tableView(tableView, heightForRowAt: indexPath)
     }
     
 }
@@ -231,6 +245,25 @@ extension AddItemTableViewController {
         @unknown default:
             break
         }
+    }
+    
+}
+
+extension String {
+    func heightWithConstrainedWidth(width: CGFloat, font: UIFont) -> CGFloat {
+        let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
+        let boundingBox = self.boundingRect(with: constraintRect, options: [.usesFontLeading, .usesLineFragmentOrigin], attributes: [NSAttributedString.Key.font: font], context: nil)
+        
+        return boundingBox.height
+    }
+}
+
+@IBDesignable class ZeroPaddingTextView: UITextView {
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        textContainerInset = UIEdgeInsets.zero
+        textContainer.lineFragmentPadding = 0
     }
     
 }
