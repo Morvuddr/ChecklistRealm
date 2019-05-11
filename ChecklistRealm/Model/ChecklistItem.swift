@@ -16,16 +16,18 @@ import RealmSwift
     dynamic var dateStr: String = ""
     dynamic var additionalInfo: String? = nil
     dynamic var checked: Bool = false
+    dynamic var latitude: Double = 0
+    dynamic var longitude: Double = 0
     
-    
-    convenience init(_ title: String, _ date: Date, _ dateStr: String, _ additionalInfo: String? = nil, _ checked: Bool = false) {
+    convenience init(_ title: String, _ date: Date, _ dateStr: String, _ additionalInfo: String? = nil, _ checked: Bool = false, _ latitude: Double = 0, _ longitude: Double = 0) {
         self.init()
         self.title = title
         self.date = date
         self.dateStr = dateStr
         self.additionalInfo = additionalInfo
         self.checked = checked
-        
+        self.latitude = latitude
+        self.longitude = longitude
     }
     
 }

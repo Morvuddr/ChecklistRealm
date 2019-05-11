@@ -12,7 +12,7 @@
         <!--Добавить задачу-->
         <scene sceneID="9LO-vl-4Kk">
             <objects>
-                <tableViewController id="wLN-az-CmF" customClass="AddItemTableViewController" customModule="Checklist" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="wLN-az-CmF" customClass="AddItemTableViewController" customModule="ChecklistRealm" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="h6S-Oh-gcF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -73,10 +73,37 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection id="2IG-mA-x7D">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="100" id="HDU-1O-992">
+                                        <rect key="frame" x="0.0" y="215" width="375" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HDU-1O-992" id="d5e-Lb-6DH">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsCompass="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zJz-WD-FvO">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="99.5" id="tBs-YO-WD6"/>
+                                                    </constraints>
+                                                </mapView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="zJz-WD-FvO" secondAttribute="bottom" id="0vw-0q-ps8"/>
+                                                <constraint firstItem="zJz-WD-FvO" firstAttribute="leading" secondItem="d5e-Lb-6DH" secondAttribute="leading" id="9nX-5u-GDl"/>
+                                                <constraint firstAttribute="trailing" secondItem="zJz-WD-FvO" secondAttribute="trailing" id="Vuc-N3-UfE"/>
+                                                <constraint firstItem="zJz-WD-FvO" firstAttribute="top" secondItem="d5e-Lb-6DH" secondAttribute="top" id="a79-Vt-Pqo"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection id="X9o-X3-RPG">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="addtionalInfoCell" rowHeight="75" id="9yr-Qb-1wc">
-                                        <rect key="frame" x="0.0" y="215" width="375" height="75"/>
+                                        <rect key="frame" x="0.0" y="351" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9yr-Qb-1wc" id="w1k-LV-8cW">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
@@ -141,6 +168,7 @@
                         <outlet property="additionalInfoTextView" destination="MiW-Q7-LFw" id="oW9-ee-1e9"/>
                         <outlet property="dateLabel" destination="3QZ-oc-0ic" id="O5y-jw-kfk"/>
                         <outlet property="doneBarItem" destination="Pyh-oW-Bhp" id="7Nb-OK-DoY"/>
+                        <outlet property="mapView" destination="zJz-WD-FvO" id="zWz-ZQ-g1F"/>
                         <outlet property="titleTextField" destination="n9R-v0-gLo" id="x4G-Gf-Ol0"/>
                     </connections>
                 </tableViewController>
