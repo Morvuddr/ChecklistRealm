@@ -10,11 +10,12 @@ import UIKit
 import RealmSwift
 import CoreLocation
 import MapKit
+import UserNotifications
 
 protocol AddItemTableViewControllerDelegate: class {
     func addItemTableViewControllerDidCancel(_ controller: AddItemTableViewController)
     func addItemTableViewController(_ controller: AddItemTableViewController, didFinishAdding item: ChecklistItem)
-    func addItemTableViewController(_ controller: AddItemTableViewController, didFinishEditing item: ChecklistItem)
+    func addItemTableViewController(_ controller: AddItemTableViewController, didFinishEditing item: ChecklistItem, _ indexToEdit: Int)
 }
 
 
@@ -105,7 +106,7 @@ class AddItemTableViewController: UITableViewController {
             
             ChecklistFunctions.shared.updateChecklistItem(at: indexToEdit!, title: titleTextField.text!,additionalInfo: additionalInfoTextView.text, dueDate: dueDate, shouldRemind: shouldRemindSwitch.isOn, in: data!)
             
-            delegate?.addItemTableViewController(self, didFinishEditing: itemToEdit)
+            delegate?.addItemTableViewController(self, didFinishEditing: itemToEdit, indexToEdit!)
             
         } else {
             let item = ChecklistItem(titleTextField.text!, currentDate!, dateLabel.text!, additionalInfoTextView.text, false, location.latitude, location.longitude, dueDate, shouldRemindSwitch.isOn)
@@ -130,6 +131,11 @@ class AddItemTableViewController: UITableViewController {
         additionalInfoTextView.resignFirstResponder()
         if shouldRemindSwitch.isOn {
             showDateCell()
+            let center = UNUserNotificationCenter.current()
+            center.requestAuthorization(options: [.alert, .sound]) {
+                granted, error in
+                // do nothing
+            }
         } else {
             if datePickerVisible {
                 hideDatePicker()

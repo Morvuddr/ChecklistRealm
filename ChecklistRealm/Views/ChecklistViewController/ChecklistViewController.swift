@@ -109,6 +109,7 @@ extension ChecklistViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        ChecklistFunctions.shared.removeNotification(forItemAt: indexPath.row, in: data!)
         ChecklistFunctions.shared.deleteChecklistItem(at: indexPath.row, in: data!)
     }
     
@@ -143,12 +144,17 @@ extension ChecklistViewController: AddItemTableViewControllerDelegate {
         
         ChecklistFunctions.shared.createChecklistItem(data!, item)
         
+        ChecklistFunctions.shared.scheduleNotification(forItemAt: 0, in: data!)
+        
         navigationController?.popViewController(animated:true)
     }
     
     func addItemTableViewController(_ controller: AddItemTableViewController,
-                                    didFinishEditing item: ChecklistItem) {
-            navigationController?.popViewController(animated:true)
+                                    didFinishEditing item: ChecklistItem, _ indexToEdit: Int) {
+        
+        ChecklistFunctions.shared.scheduleNotification(forItemAt: indexToEdit, in: data!)
+        
+        navigationController?.popViewController(animated:true)
     }
     
 }

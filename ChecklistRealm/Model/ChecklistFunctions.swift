@@ -9,6 +9,7 @@
 import UIKit
 import Foundation
 import RealmSwift
+import UserNotifications
 
 class ChecklistFunctions {
     
@@ -151,6 +152,45 @@ class ChecklistFunctions {
             newChecklistItem?["dueDate"] = date
             newChecklistItem?["shouldRemind"] = false
         }
+    }
+    
+    // MARK: - Notifications
+    
+    func scheduleNotification(forItemAt index: Int, in data: Data) {
+        removeNotification(forItemAt: index, in: data)
+        if let dueDate = data.checklistItems[index].dueDate{
+            if dueDate.timeIntervalSinceNow > 0 {
+                
+                let calendar = Calendar(identifier: .gregorian)
+                let diff = calendar.dateComponents([.hour, .minute], from: Date(), to: dueDate)
+                
+                if (diff.hour! > 1) || (diff.hour! == 1 && diff.minute! > 0)  {
+                    
+                    let earlyDate = Calendar.current.date(byAdding: .hour, value: -1, to: dueDate)
+                    let components = calendar.dateComponents( [.month, .day, .hour, .minute],
+                                                              from: earlyDate!)
+                    let content = UNMutableNotificationContent()
+                    content.title = "Заканчивается срок у задачи:"
+                    content.body = data.checklistItems[index].title
+                    content.sound = UNNotificationSound.default
+                    
+                    let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
+                    
+                    let itemID = data.checklistItems[index].itemID
+                    let request = UNNotificationRequest(identifier: itemID, content: content, trigger: trigger)
+                    
+                    let center = UNUserNotificationCenter.current()
+                    center.add(request)
+                    
+                }
+            }
+        }
+    }
+    
+    func removeNotification(forItemAt index: Int, in data: Data){
+        let itemID = data.checklistItems[index].itemID
+        let center = UNUserNotificationCenter.current()
+        center.removePendingNotificationRequests(withIdentifiers: [itemID])
     }
     
 }
