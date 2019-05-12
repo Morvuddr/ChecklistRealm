@@ -23,8 +23,18 @@ class ChecklistTableViewCell: UITableViewCell {
         }
         if checklistItem.checked {
             checkmark.text = "✔︎"
+            checklistTitle.textColor = UIColor.black
         } else {
             checkmark.text = ""
+            if let dueDate = checklistItem.dueDate {
+                if dueDate.timeIntervalSinceNow < 0 {
+                    checklistTitle.textColor = UIColor.red
+                } else {
+                    checklistTitle.textColor = UIColor.black
+                }
+            } else {
+                checklistTitle.textColor = UIColor.black
+            }
         }
     }
     

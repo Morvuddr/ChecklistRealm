@@ -63,7 +63,7 @@ class ChecklistViewController: UIViewController {
         
         checklistTableView.delegate = self
         checklistTableView.dataSource = self
-        checklistTableView.rowHeight = 100
+        checklistTableView.estimatedRowHeight = 0
         
     }
     
@@ -124,6 +124,10 @@ extension ChecklistViewController: UITableViewDelegate, UITableViewDataSource {
         let itemToEdit = data!.checklistItems[indexPath.row]
         
         showAddNewItemTableViewController(itemToEdit, indexPath.row)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
     
 }
