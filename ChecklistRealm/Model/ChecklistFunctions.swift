@@ -159,14 +159,27 @@ class ChecklistFunctions {
     func scheduleNotification(forItemAt index: Int, in data: Data) {
         removeNotification(forItemAt: index, in: data)
         if let dueDate = data.checklistItems[index].dueDate{
-            if dueDate.timeIntervalSinceNow > 0 && data.checklistItems[index].checked == false {
+            if dueDate.timeIntervalSinceNow > 0 && data.checklistItems[index].checked == false && UserDefaults.standard.bool(forKey: "shouldRemind"){
                 
                 let calendar = Calendar(identifier: .gregorian)
-                let diff = calendar.dateComponents([.hour, .minute], from: Date(), to: dueDate)
+                let diff = calendar.dateComponents([.hour, .minute, .second], from: Date(), to: dueDate)
                 
-                if (diff.hour! > 1) || (diff.hour! == 1 && diff.minute! > 0)  {
+                let remindHours = UserDefaults.standard.integer(forKey: "remindHours")
+                let remindMinutes = UserDefaults.standard.integer(forKey: "remindMinutes")
+                
+                let firstSituation = ((remindHours == 0 && remindMinutes > 0) && (diff.minute! > remindMinutes || (diff.minute! == remindMinutes || diff.second! > 0)))
+                
+                let secondSituation = ((remindHours > 0 && remindMinutes == 0) && (diff.hour! > remindHours || (diff.hour! == remindHours && diff.second! > 0)))
+                
+                let thirdSituation = ((remindHours > 0 && remindMinutes > 0) && (diff.hour! > remindHours || (diff.hour! == remindHours && diff.minute! > remindMinutes) || (diff.hour! == remindHours && diff.minute! == remindMinutes && diff.second! > 0)))
+                
+                let fourthSituation = (remindHours == 0 && remindMinutes == 0)
+                
+                if firstSituation || secondSituation || thirdSituation || fourthSituation {
                     
-                    let earlyDate = Calendar.current.date(byAdding: .hour, value: -1, to: dueDate)
+                    var earlyDate = Calendar.current.date(byAdding: .hour, value: -remindHours, to: dueDate)
+                    earlyDate = Calendar.current.date(byAdding: .minute, value: -remindMinutes, to: earlyDate!)
+                    
                     let components = calendar.dateComponents( [.month, .day, .hour, .minute],
                                                               from: earlyDate!)
                     let content = UNMutableNotificationContent()
@@ -181,7 +194,6 @@ class ChecklistFunctions {
                     
                     let center = UNUserNotificationCenter.current()
                     center.add(request)
-                    
                 }
             }
         }
@@ -191,6 +203,16 @@ class ChecklistFunctions {
         let itemID = data.checklistItems[index].itemID
         let center = UNUserNotificationCenter.current()
         center.removePendingNotificationRequests(withIdentifiers: [itemID])
+    }
+    
+    func updateNotifications(in data: Data){
+        for index in 0 ..< data.checklistItems.count{
+            if UserDefaults.standard.bool(forKey: "shouldRemind") {
+                scheduleNotification(forItemAt: index, in: data)
+            } else {
+                removeNotification(forItemAt: index, in: data)
+            }
+        }
     }
     
 }

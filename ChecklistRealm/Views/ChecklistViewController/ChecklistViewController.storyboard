@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VoC-2V-Qct">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Foi-cA-a4l">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TP0-g8-crw">
-                                <rect key="frame" x="0.0" y="116" width="414" height="620"/>
+                                <rect key="frame" x="0.0" y="116" width="414" height="571"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ChecklistTableViewCell" rowHeight="100" id="DCt-TX-X0j" customClass="ChecklistTableViewCell" customModule="ChecklistRealm" customModuleProvider="target">
@@ -117,12 +117,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="992.79999999999995" y="27.436281859070466"/>
+            <point key="canvasLocation" x="1900.0000000000002" y="26.90217391304348"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Задачи-->
         <scene sceneID="Vsj-kH-qev">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VoC-2V-Qct" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Задачи" id="rR3-4v-LuP"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="JPP-9U-Txz">
                         <rect key="frame" x="0.0" y="20" width="414" height="96"/>
@@ -138,7 +139,41 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="etF-eI-01J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="212" y="27"/>
+            <point key="canvasLocation" x="1118.840579710145" y="26.90217391304348"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="OUH-2l-FpO">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Foi-cA-a4l" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6sI-Cf-maw">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBar>
+                    <connections>
+                        <segue destination="VoC-2V-Qct" kind="relationship" relationship="viewControllers" id="1ip-EA-xzL"/>
+                        <segue destination="7Wo-UE-gwS" kind="relationship" relationship="viewControllers" id="2J4-wE-uCE"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LSh-oZ-u3K" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="319" y="27"/>
+        </scene>
+        <!--SettingsTableViewController-->
+        <scene sceneID="c4E-bw-nJP">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SettingsTableViewController" id="7Wo-UE-gwS" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Настройки" id="Phq-kJ-2b3"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BLW-KZ-U9J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="319" y="483"/>
         </scene>
     </scenes>
+    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

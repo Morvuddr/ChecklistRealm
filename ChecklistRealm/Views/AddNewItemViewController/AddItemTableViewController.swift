@@ -137,9 +137,6 @@ class AddItemTableViewController: UITableViewController {
                 // do nothing
             }
         } else {
-            if datePickerVisible {
-                hideDatePicker()
-            }
             hideDateCell()
         }
     }
@@ -165,6 +162,9 @@ class AddItemTableViewController: UITableViewController {
     }
     
     func hideDateCell(){
+        if datePickerVisible {
+            hideDatePicker()
+        }
         dateCellVisible = false
         dueDate = nil
         let indexPathDateRow = IndexPath(row: 1, section: 2)

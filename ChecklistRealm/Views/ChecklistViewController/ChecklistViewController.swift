@@ -26,12 +26,25 @@ class ChecklistViewController: UIViewController {
         if !UserDefaults.standard.bool(forKey: firstLaunch){
             
             ChecklistFunctions.shared.createData()
-            
             UserDefaults.standard.set(true, forKey: firstLaunch)
+            
         }
+        
+        if UserDefaults.standard.bool(forKey: "shouldRemind") == false && UserDefaults.standard.integer(forKey: "remindHours") == 0 {
+            
+            UserDefaults.standard.set(true, forKey: "shouldRemind")
+            UserDefaults.standard.set(1, forKey: "remindHours")
+            UserDefaults.standard.set(0, forKey: "remindMinutes")
+        
+        }
+        
         
         data = realm.objects(Data.self).first!
         ChecklistFunctions.shared.sortChecklistItems(in: data!)
+        
+        let secondTabNavController = self.tabBarController?.viewControllers![1] as! UINavigationController
+        let secontTab = secondTabNavController.topViewController as! SettingsTableViewController
+        secontTab.data = data
         
         notificationToken = data?.checklistItems.observe { [weak self] (changes) in
             guard let tableView = self?.checklistTableView else { return }
