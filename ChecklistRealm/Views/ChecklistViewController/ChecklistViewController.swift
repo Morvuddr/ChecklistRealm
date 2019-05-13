@@ -116,6 +116,11 @@ extension ChecklistViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         ChecklistFunctions.shared.toggleChecked(at: indexPath.row, in: data!)
+        if (data?.checklistItems[indexPath.row].checked)! {
+            ChecklistFunctions.shared.removeNotification(forItemAt: indexPath.row, in: data!)
+        } else {
+            ChecklistFunctions.shared.scheduleNotification(forItemAt: indexPath.row, in: data!)
+        }
         tableView.deselectRow(at: indexPath, animated: true)
         
     }

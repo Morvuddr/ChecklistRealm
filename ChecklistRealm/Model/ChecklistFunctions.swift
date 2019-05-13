@@ -159,7 +159,7 @@ class ChecklistFunctions {
     func scheduleNotification(forItemAt index: Int, in data: Data) {
         removeNotification(forItemAt: index, in: data)
         if let dueDate = data.checklistItems[index].dueDate{
-            if dueDate.timeIntervalSinceNow > 0 {
+            if dueDate.timeIntervalSinceNow > 0 && data.checklistItems[index].checked == false {
                 
                 let calendar = Calendar(identifier: .gregorian)
                 let diff = calendar.dateComponents([.hour, .minute], from: Date(), to: dueDate)
