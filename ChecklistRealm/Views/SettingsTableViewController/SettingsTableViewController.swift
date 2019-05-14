@@ -96,9 +96,12 @@ class SettingsTableViewController: UITableViewController {
         disableButtons()
         ChecklistFunctions.shared.updateNotifications(in: data!)
     }
+    
     @IBAction func cancelAction(_ sender: UIBarButtonItem) {
         
+        hideDatePicker()
         configureTableViewConroller()
+        configureRemindTimeLabel(remindHours, remindMinutes)
         
     }
     
@@ -120,20 +123,17 @@ class SettingsTableViewController: UITableViewController {
         if shouldRemindSwitch.isOn {
             showDateCell()
         } else {
-            if datePickerVisible {
-                hideDatePicker()
-            }
             hideDateCell()
         }
     }
     
     func showDateCell(){
-        
-        dateCellVisible = true
-        shouldRemind = true
-        tableView.insertRows(at: [IndexPath(row: 1, section: 0)], with: .fade)
-        configureRemindTimeLabel(remindHours, remindMinutes)
-        
+        if !dateCellVisible {
+            dateCellVisible = true
+            shouldRemind = true
+            tableView.insertRows(at: [IndexPath(row: 1, section: 0)], with: .fade)
+            configureRemindTimeLabel(remindHours, remindMinutes)
+        }
     }
     
     func hideDateCell(){
