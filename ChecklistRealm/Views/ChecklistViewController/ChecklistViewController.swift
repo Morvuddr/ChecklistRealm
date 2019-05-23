@@ -95,7 +95,7 @@ class ChecklistViewController: UIViewController {
             viewController.itemToEdit = itemToEdit
             viewController.indexToEdit = indexToEdit
         }
-        
+        self.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(viewController, animated: true)
     }
     
@@ -154,6 +154,7 @@ extension ChecklistViewController: UITableViewDelegate, UITableViewDataSource {
 extension ChecklistViewController: AddItemTableViewControllerDelegate {
     
     func addItemTableViewControllerDidCancel(_ controller: AddItemTableViewController) {
+        self.hidesBottomBarWhenPushed = false
         navigationController?.popViewController(animated:true)
     }
     
@@ -164,6 +165,7 @@ extension ChecklistViewController: AddItemTableViewControllerDelegate {
         
         ChecklistFunctions.shared.scheduleNotification(forItemAt: 0, in: data!)
         
+        self.hidesBottomBarWhenPushed = false
         navigationController?.popViewController(animated:true)
     }
     
@@ -172,6 +174,7 @@ extension ChecklistViewController: AddItemTableViewControllerDelegate {
         
         ChecklistFunctions.shared.scheduleNotification(forItemAt: indexToEdit, in: data!)
         
+        self.hidesBottomBarWhenPushed = false
         navigationController?.popViewController(animated:true)
     }
     

@@ -177,6 +177,10 @@ class SettingsTableViewController: UITableViewController {
         remindMinutes = components.minute!
         configureRemindTimeLabel(remindHours, remindMinutes)
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        hideDatePicker()
+    }
 
     // MARK: - Table view data source
 

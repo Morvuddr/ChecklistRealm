@@ -123,7 +123,7 @@
         <scene sceneID="Vsj-kH-qev">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VoC-2V-Qct" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Задачи" id="rR3-4v-LuP"/>
+                    <tabBarItem key="tabBarItem" title="Задачи" image="checklist" id="rR3-4v-LuP"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="JPP-9U-Txz">
                         <rect key="frame" x="0.0" y="20" width="414" height="96"/>
@@ -147,6 +147,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Foi-cA-a4l" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6sI-Cf-maw">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <userDefinedRuntimeAttributes>
@@ -168,12 +169,16 @@
         <scene sceneID="c4E-bw-nJP">
             <objects>
                 <viewControllerPlaceholder storyboardName="SettingsTableViewController" id="7Wo-UE-gwS" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Настройки" id="Phq-kJ-2b3"/>
+                    <tabBarItem key="tabBarItem" title="Настройки" image="settings" id="Phq-kJ-2b3"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BLW-KZ-U9J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="319" y="483"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="checklist" width="22" height="25.333333969116211"/>
+        <image name="settings" width="25" height="25"/>
+    </resources>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

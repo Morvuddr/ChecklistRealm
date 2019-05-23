@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cAs-Bn-DIh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Sur-ti-Z9s">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -28,12 +28,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="991.20000000000005" y="374.66266866566718"/>
+            <point key="canvasLocation" x="1930.4000000000001" y="374.66266866566718"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Задачи-->
         <scene sceneID="mg4-X2-GFD">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cAs-Bn-DIh" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Задачи" image="checklist" id="qwW-z3-2iG"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="9YK-24-tsN">
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>
@@ -46,7 +47,47 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="16P-M7-p6i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="52" y="374.66266866566718"/>
+            <point key="canvasLocation" x="991.20000000000005" y="374.66266866566718"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="jkB-Yg-ikQ">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Sur-ti-Z9s" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Sbv-AM-OMI">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="cAs-Bn-DIh" kind="relationship" relationship="viewControllers" id="HWZ-B4-nMV"/>
+                        <segue destination="agt-i7-q2S" kind="relationship" relationship="viewControllers" id="EGP-jf-CtI"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fdv-DI-3Sv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52" y="375"/>
+        </scene>
+        <!--Настройки-->
+        <scene sceneID="5k3-wE-OQE">
+            <objects>
+                <viewController id="agt-i7-q2S" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="liy-Jc-bHf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="KT4-Q8-oa0"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Настройки" image="settings" id="6fo-NU-iZj"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6PE-4D-cpp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52" y="1076"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="checklist" width="23" height="25.5"/>
+        <image name="settings" width="25" height="25"/>
+    </resources>
 </document>
