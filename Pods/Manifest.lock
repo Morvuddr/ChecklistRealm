@@ -4,19 +4,23 @@ PODS:
   - Realm/Headers (3.15.0)
   - RealmSwift (3.15.0):
     - Realm (= 3.15.0)
+  - SwiftPasscodeLock (1.1.5)
 
 DEPENDENCIES:
   - RealmSwift
+  - SwiftPasscodeLock
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Realm
     - RealmSwift
+    - SwiftPasscodeLock
 
 SPEC CHECKSUMS:
   Realm: 9b834e1be6062f544805252c812348872dc5d4ed
   RealmSwift: 8a41886f8ab6efef9eb8df97de2f2bb911561a79
+  SwiftPasscodeLock: 4869e32e07fa28de9efc18146cbb781b5c293164
 
-PODFILE CHECKSUM: 7abc999d3ba6364074ff3a600eb290d9cbe1c10e
+PODFILE CHECKSUM: e1a81e9534ca184d9d94164d44e2d8321dba9cee
 
 COCOAPODS: 1.6.1

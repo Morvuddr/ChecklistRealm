@@ -21,6 +21,8 @@
 		CFAA555C227C902100960651 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAA555B227C902100960651 /* AppDelegate.swift */; };
 		CFAA5563227C902200960651 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFAA5562227C902200960651 /* Assets.xcassets */; };
 		CFAA5566227C902200960651 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFAA5564227C902200960651 /* LaunchScreen.storyboard */; };
+		CFE6F3A6229A943E00D3905E /* AuthTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFE6F3A5229A943E00D3905E /* AuthTableViewController.storyboard */; };
+		CFE6F3A8229A944C00D3905E /* AuthTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE6F3A7229A944C00D3905E /* AuthTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		CFAA5562227C902200960651 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CFAA5565227C902200960651 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CFAA5567227C902200960651 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CFE6F3A5229A943E00D3905E /* AuthTableViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AuthTableViewController.storyboard; sourceTree = "<group>"; };
+		CFE6F3A7229A944C00D3905E /* AuthTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +119,7 @@
 		CF1CACDA2289C92300DE944A /* SettingsTableViewController */ = {
 			isa = PBXGroup;
 			children = (
+				CFE6F3A4229A93EB00D3905E /* AuthTableViewController */,
 				CF1CACD82289B6D900DE944A /* SettingsTableViewController.storyboard */,
 				CF1CACDB2289C96B00DE944A /* SettingsTableViewController.swift */,
 			);
@@ -150,6 +155,15 @@
 				CF00312F227C9B5B002DA167 /* Views */,
 			);
 			path = ChecklistRealm;
+			sourceTree = "<group>";
+		};
+		CFE6F3A4229A93EB00D3905E /* AuthTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CFE6F3A5229A943E00D3905E /* AuthTableViewController.storyboard */,
+				CFE6F3A7229A944C00D3905E /* AuthTableViewController.swift */,
+			);
+			path = AuthTableViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,6 +230,7 @@
 				CFAA5563227C902200960651 /* Assets.xcassets in Resources */,
 				CF003138227C9B5B002DA167 /* ChecklistViewController.storyboard in Resources */,
 				CF1CACD92289B6D900DE944A /* SettingsTableViewController.storyboard in Resources */,
+				CFE6F3A6229A943E00D3905E /* AuthTableViewController.storyboard in Resources */,
 				CF00313B227C9B5B002DA167 /* AddItemTableViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -234,6 +249,7 @@
 				"${PODS_ROOT}/Target Support Files/Pods-ChecklistRealm/Pods-ChecklistRealm-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftPasscodeLock/SwiftPasscodeLock.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -241,6 +257,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftPasscodeLock.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -281,6 +298,7 @@
 				CF003142227C9BD7002DA167 /* ChecklistItem.swift in Sources */,
 				CFAA555C227C902100960651 /* AppDelegate.swift in Sources */,
 				CF1CACDC2289C96B00DE944A /* SettingsTableViewController.swift in Sources */,
+				CFE6F3A8229A944C00D3905E /* AuthTableViewController.swift in Sources */,
 				CF003137227C9B5B002DA167 /* ChecklistViewController.swift in Sources */,
 				CF003141227C9BD7002DA167 /* ChecklistFunctions.swift in Sources */,
 				CF003139227C9B5B002DA167 /* ChecklistTableViewCell.swift in Sources */,

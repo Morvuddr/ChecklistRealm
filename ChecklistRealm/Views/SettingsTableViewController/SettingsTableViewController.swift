@@ -243,7 +243,7 @@ class SettingsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        if indexPath.section == 0 && indexPath.row == 1 {
+        if (indexPath.section == 0 && indexPath.row == 1) || (indexPath.section == 1 && indexPath.row == 0) {
             return indexPath
         }
         return nil
@@ -259,5 +259,22 @@ class SettingsTableViewController: UITableViewController {
                 hideDatePicker()
             }
         }
+        if indexPath.section == 1 && indexPath.row == 0 {
+            self.tableView.deselectRow(at: indexPath, animated: true)
+            // Returns the initial view controller on a storyboard
+            let storyboard = UIStoryboard(name: String(describing: AuthTableViewController.self), bundle: nil)
+            let viewController = storyboard.instantiateInitialViewController() as! AuthTableViewController
+            viewController.delegate = self
+            
+            self.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
+}
+
+extension SettingsTableViewController: AuthTableViewControllerDelegate {
+    func authTableViewControllerDidFinishEditingSettings(_ controller: AuthTableViewController) {
+        self.hidesBottomBarWhenPushed = false
+        navigationController?.popViewController(animated: true)
     }
 }

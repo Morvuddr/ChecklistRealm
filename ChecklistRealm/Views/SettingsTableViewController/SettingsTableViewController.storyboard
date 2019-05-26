@@ -41,11 +41,34 @@
                                                 </switch>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="MQb-py-EtU" firstAttribute="top" secondItem="EIx-bU-2To" secondAttribute="topMargin" id="TmT-gz-e5i"/>
-                                                <constraint firstItem="MQb-py-EtU" firstAttribute="centerY" secondItem="S2Y-aZ-ZPN" secondAttribute="centerY" id="cEY-iV-DSb"/>
+                                                <constraint firstItem="MQb-py-EtU" firstAttribute="centerY" secondItem="EIx-bU-2To" secondAttribute="centerY" id="8SG-6c-txQ"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="S2Y-aZ-ZPN" secondAttribute="trailing" id="hcI-YU-BT0"/>
                                                 <constraint firstItem="S2Y-aZ-ZPN" firstAttribute="centerY" secondItem="EIx-bU-2To" secondAttribute="centerY" id="kxU-vx-bCj"/>
-                                                <constraint firstItem="MQb-py-EtU" firstAttribute="leading" secondItem="EIx-bU-2To" secondAttribute="leadingMargin" id="ltv-AN-9Tc"/>
+                                                <constraint firstItem="MQb-py-EtU" firstAttribute="leading" secondItem="EIx-bU-2To" secondAttribute="leadingMargin" id="vdn-Dg-Awy"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="OgA-z8-dCw">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="68y-Ml-bpb">
+                                        <rect key="frame" x="0.0" y="115" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="68y-Ml-bpb" id="HoO-D3-PLb">
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Безопасность" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uFT-04-Wd0">
+                                                    <rect key="frame" x="16" y="11" width="118" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="uFT-04-Wd0" firstAttribute="leading" secondItem="HoO-D3-PLb" secondAttribute="leadingMargin" id="JcM-bb-CXe"/>
+                                                <constraint firstItem="uFT-04-Wd0" firstAttribute="centerY" secondItem="HoO-D3-PLb" secondAttribute="centerY" id="gop-nQ-Fz6"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
