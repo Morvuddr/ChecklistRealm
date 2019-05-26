@@ -1,0 +1,33 @@
+/* 
+  PasscodeLock.strings
+  PasscodeLock
+
+ Created by Игорь Бопп on 26/05/2019.
+ Copyright © 2019 Igor. All rights reserved.
+*/
+
+/* Enter Passcode State */
+"PasscodeLockEnterTitle" = "Введите пароль";
+"PasscodeLockEnterDescription" = "Введите пароль, чтобы продолжить";
+
+/* Set Passcode State */
+"PasscodeLockSetTitle" = "Введите пароль";
+"PasscodeLockSetDescription" = "Введите новый пароль";
+
+/* Confirm Passcode State */
+"PasscodeLockConfirmTitle" = "Подтвердите пароль";
+"PasscodeLockConfirmDescription" = "Введите пароль повторно";
+
+/* Change Passcode State */
+"PasscodeLockChangeTitle" = "Введите старый пароль";
+"PasscodeLockChangeDescription" = "Введите ваш старый пароль";
+
+/* Passcode Mismatch State */
+"PasscodeLockMismatchTitle" = "Попробуйте еще раз";
+"PasscodeLockMismatchDescription" = "Пароли не совпали";
+
+/* Touch ID Reason */
+"PasscodeLockTouchIDReason" = "Требуется аутентификация для продолжения";
+
+/* Touch ID Fallback Button */
+"PasscodeLockTouchIDButton" = "Ввести пароль";

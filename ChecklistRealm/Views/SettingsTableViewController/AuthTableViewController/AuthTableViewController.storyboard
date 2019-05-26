@@ -20,12 +20,32 @@
                         <sections>
                             <tableViewSection id="DrF-Ge-ytV">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Pli-ly-HRq">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="Pli-ly-HRq">
                                         <rect key="frame" x="0.0" y="35" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Pli-ly-HRq" id="JWl-wf-aBW">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Использовать код-пароль" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a2W-Sy-rgc">
+                                                    <rect key="frame" x="16" y="11" width="221" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="SrW-Us-Epa">
+                                                    <rect key="frame" x="310" y="6.5" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="usingPasscodeSwitchAction:" destination="l4B-xx-npQ" eventType="valueChanged" id="3RZ-lv-l3v"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="SrW-Us-Epa" secondAttribute="trailing" id="Adu-Fm-97c"/>
+                                                <constraint firstItem="SrW-Us-Epa" firstAttribute="centerY" secondItem="JWl-wf-aBW" secondAttribute="centerY" id="Yc9-2b-6Ea"/>
+                                                <constraint firstItem="a2W-Sy-rgc" firstAttribute="leading" secondItem="JWl-wf-aBW" secondAttribute="leadingMargin" id="cmF-m2-eyn"/>
+                                                <constraint firstItem="a2W-Sy-rgc" firstAttribute="centerY" secondItem="JWl-wf-aBW" secondAttribute="centerY" id="jFQ-lk-IKa"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -45,8 +65,62 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="changePasscodeCell" destination="VQV-AL-XjO" id="UWD-e1-KRw"/>
+                        <outlet property="usingOfBiometricSwitch" destination="bcd-h8-J6I" id="HdS-aa-Dx0"/>
+                        <outlet property="usingOfBiometricsCell" destination="SUp-r6-Par" id="rLt-b8-W9M"/>
+                        <outlet property="usingPasscodeSwitch" destination="SrW-Us-Epa" id="nR6-hc-hAV"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OYJ-Ax-aSt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="VQV-AL-XjO">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VQV-AL-XjO" id="AD0-S6-NjK">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Сменить код-пароль" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MZR-Mq-DWz">
+                                <rect key="frame" x="20" y="11" width="177" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="MZR-Mq-DWz" firstAttribute="leading" secondItem="AD0-S6-NjK" secondAttribute="leadingMargin" id="1JC-kp-rAA"/>
+                            <constraint firstItem="MZR-Mq-DWz" firstAttribute="centerY" secondItem="AD0-S6-NjK" secondAttribute="centerY" id="Q58-Di-5rm"/>
+                        </constraints>
+                    </tableViewCellContentView>
+                </tableViewCell>
+                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="SUp-r6-Par">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SUp-r6-Par" id="Clu-P6-daD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="bcd-h8-J6I">
+                                <rect key="frame" x="345" y="6.5" width="51" height="31"/>
+                                <connections>
+                                    <action selector="usingOfBiometricsSwitchAction:" destination="l4B-xx-npQ" eventType="valueChanged" id="L6d-Mp-mNs"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Touch-ID или Face-ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdK-7Z-kfn">
+                                <rect key="frame" x="20" y="11.5" width="168.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="bdK-7Z-kfn" firstAttribute="centerY" secondItem="Clu-P6-daD" secondAttribute="centerY" id="Fh3-SL-9CX"/>
+                            <constraint firstItem="bcd-h8-J6I" firstAttribute="trailing" secondItem="Clu-P6-daD" secondAttribute="trailingMargin" id="Wjm-OT-JIJ"/>
+                            <constraint firstItem="bcd-h8-J6I" firstAttribute="centerY" secondItem="Clu-P6-daD" secondAttribute="centerY" id="c13-dk-k38"/>
+                            <constraint firstItem="bdK-7Z-kfn" firstAttribute="leading" secondItem="Clu-P6-daD" secondAttribute="leadingMargin" id="uhr-Se-J0o"/>
+                        </constraints>
+                    </tableViewCellContentView>
+                </tableViewCell>
             </objects>
             <point key="canvasLocation" x="62" y="103"/>
         </scene>

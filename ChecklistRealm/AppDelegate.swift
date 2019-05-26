@@ -8,12 +8,13 @@
 
 import UIKit
 import UserNotifications
+import SwiftPasscodeLock
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var presenter: PasscodeLockPresenter?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -22,6 +23,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let center = UNUserNotificationCenter.current()
         center.delegate = self
+        
+        let configuration = PasscodeLockConfiguration()
+        presenter = PasscodeLockPresenter(mainWindow: self.window,
+                                          configuration: configuration,
+                                          state: PasscodeLockViewController.LockState.enterPasscode.getState())
+        presenter?.presentPasscodeLock()
         
         return true
     }
@@ -34,6 +41,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        let configuration = PasscodeLockConfiguration()
+        presenter = PasscodeLockPresenter(mainWindow: self.window,
+                                          configuration: configuration,
+                                          state: PasscodeLockViewController.LockState.enterPasscode.getState())
+        presenter?.presentPasscodeLock()
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
