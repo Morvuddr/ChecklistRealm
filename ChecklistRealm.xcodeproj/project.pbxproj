@@ -21,6 +21,7 @@
 		CF81CEEB229AD8CA0043A736 /* PasscodeLock.strings in Resources */ = {isa = PBXBuildFile; fileRef = CF81CEEA229AD8CA0043A736 /* PasscodeLock.strings */; };
 		CF81CEEE229ADB480043A736 /* PasscodeLockConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF81CEED229ADB480043A736 /* PasscodeLockConfiguration.swift */; };
 		CF81CEF0229ADCD10043A736 /* UserDefaultsPasscodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF81CEEF229ADCD10043A736 /* UserDefaultsPasscodeRepository.swift */; };
+		CF81CEF2229B37CB0043A736 /* PasscodeLockView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF81CEF1229B37CB0043A736 /* PasscodeLockView.xib */; };
 		CFAA555C227C902100960651 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAA555B227C902100960651 /* AppDelegate.swift */; };
 		CFAA5563227C902200960651 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFAA5562227C902200960651 /* Assets.xcassets */; };
 		CFAA5566227C902200960651 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFAA5564227C902200960651 /* LaunchScreen.storyboard */; };
@@ -45,6 +46,7 @@
 		CF81CEEA229AD8CA0043A736 /* PasscodeLock.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = PasscodeLock.strings; path = ChecklistRealm/PasscodeLockAssets/PasscodeLock.strings; sourceTree = SOURCE_ROOT; };
 		CF81CEED229ADB480043A736 /* PasscodeLockConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeLockConfiguration.swift; sourceTree = "<group>"; };
 		CF81CEEF229ADCD10043A736 /* UserDefaultsPasscodeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsPasscodeRepository.swift; sourceTree = "<group>"; };
+		CF81CEF1229B37CB0043A736 /* PasscodeLockView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PasscodeLockView.xib; sourceTree = "<group>"; };
 		CFAA5558227C902100960651 /* ChecklistRealm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChecklistRealm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFAA555B227C902100960651 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFAA5562227C902200960651 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				CF81CEEA229AD8CA0043A736 /* PasscodeLock.strings */,
 				CF81CEED229ADB480043A736 /* PasscodeLockConfiguration.swift */,
 				CF81CEEF229ADCD10043A736 /* UserDefaultsPasscodeRepository.swift */,
+				CF81CEF1229B37CB0043A736 /* PasscodeLockView.xib */,
 			);
 			path = PasscodeLockAssets;
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 				CFAA5566227C902200960651 /* LaunchScreen.storyboard in Resources */,
 				CFAA5563227C902200960651 /* Assets.xcassets in Resources */,
 				CF003138227C9B5B002DA167 /* ChecklistViewController.storyboard in Resources */,
+				CF81CEF2229B37CB0043A736 /* PasscodeLockView.xib in Resources */,
 				CF1CACD92289B6D900DE944A /* SettingsTableViewController.storyboard in Resources */,
 				CFE6F3A6229A943E00D3905E /* AuthTableViewController.storyboard in Resources */,
 				CF00313B227C9B5B002DA167 /* AddItemTableViewController.storyboard in Resources */,

@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PasscodeLockViewController" customModule="SwiftPasscodeLock">
+            <connections>
+                <outlet property="cancelButton" destination="7HB-pz-rvy" id="7eM-VD-d7u"/>
+                <outlet property="deleteSignButton" destination="7Ad-3Z-4Xe" id="n85-s8-96W"/>
+                <outlet property="descriptionLabel" destination="f9C-Zo-5PZ" id="bQV-KD-Ud2"/>
+                <outlet property="titleLabel" destination="XoH-bz-MuV" id="Cdj-Zx-Ybu"/>
+                <outlet property="touchIDButton" destination="tkG-4B-7tl" id="lPY-9b-Tn3"/>
+                <outlet property="view" destination="U3i-MV-Me2" id="ghY-Fa-bUe"/>
+                <outletCollection property="placeholders" destination="Ig9-fT-Jis" collectionClass="NSMutableArray" id="Syx-rp-mLf"/>
+                <outletCollection property="placeholders" destination="y5r-2P-Xtl" collectionClass="NSMutableArray" id="MW4-W6-jEM"/>
+                <outletCollection property="placeholders" destination="e3s-Xr-g5c" collectionClass="NSMutableArray" id="Ela-0K-GOg"/>
+                <outletCollection property="placeholders" destination="260-od-jyd" collectionClass="NSMutableArray" id="d96-dD-JTF"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="U3i-MV-Me2">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XoH-bz-MuV">
+                    <rect key="frame" x="20" y="76" width="335" height="23"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9C-Zo-5PZ">
+                    <rect key="frame" x="20" y="109" width="335" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="rQy-DL-8iB">
+                    <rect key="frame" x="137.5" y="147" width="100" height="16"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ig9-fT-Jis" userLabel="Placeholder 1" customClass="PasscodeSignPlaceholderView" customModule="SwiftPasscodeLock">
+                            <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="errorColor">
+                                    <color key="value" red="0.95294117649999999" green="0.4823529412" blue="0.4823529412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="activeColor">
+                                    <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="inactiveColor">
+                                    <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y5r-2P-Xtl" userLabel="Placeholder 2" customClass="PasscodeSignPlaceholderView" customModule="SwiftPasscodeLock">
+                            <rect key="frame" x="28" y="0.0" width="16" height="16"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="errorColor">
+                                    <color key="value" red="0.95294117649999999" green="0.4823529412" blue="0.4823529412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="activeColor">
+                                    <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="inactiveColor">
+                                    <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e3s-Xr-g5c" userLabel="Placeholder 3" customClass="PasscodeSignPlaceholderView" customModule="SwiftPasscodeLock">
+                            <rect key="frame" x="56" y="0.0" width="16" height="16"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="errorColor">
+                                    <color key="value" red="0.95294117649999999" green="0.4823529412" blue="0.4823529412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="activeColor">
+                                    <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="inactiveColor">
+                                    <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="260-od-jyd" userLabel="Placeholder 4" customClass="PasscodeSignPlaceholderView" customModule="SwiftPasscodeLock">
+                            <rect key="frame" x="84" y="0.0" width="16" height="16"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="errorColor">
+                                    <color key="value" red="0.95294117649999999" green="0.4823529412" blue="0.4823529412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="activeColor">
+                                    <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="inactiveColor">
+                                    <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="rQy-DL-8iB" secondAttribute="height" multiplier="100:16" id="l4v-Y4-XQQ"/>
+                    </constraints>
+                </stackView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="M1t-dC-9y3">
+                    <rect key="frame" x="50" y="178" width="275" height="371"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="q2E-7G-2Fp">
+                            <rect key="frame" x="0.0" y="0.0" width="275" height="85"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IUK-6k-7on" customClass="PasscodeSignButton" customModule="SwiftPasscodeLock">
+                                    <rect key="frame" x="0.0" y="0.0" width="81.5" height="85"/>
+                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="21"/>
+                                    <state key="normal" title="1">
+                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <state key="selected">
+                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <state key="highlighted">
+                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="highlightBackgroundColor">
+                                            <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="passcodeSign" value="1"/>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="passcodeSignButtonTap:" destination="-1" eventType="touchUpInside" id="ZTg-6m-sJu"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ibR-sS-w6i" customClass="PasscodeSignButton" customModule="SwiftPasscodeLock">
+                                    <rect key="frame" x="96.5" y="0.0" width="82" height="85"/>
+                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="21"/>
+                                    <state key="normal" title="2">
+                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <state key="selected">
+                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <state key="highlighted">
+                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="highlightBackgroundColor">
+                                            <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="passcodeSign" value="2"/>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="passcodeSignButtonTap:" destination="-1" eventType="touchUpInside" id="oTY-Xi-dki"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ocC-Io-zpw" customClass="PasscodeSignButton" customModule="SwiftPasscodeLock">
+                                    <rect key="frame" x="193.5" y="0.0" width="81.5" height="85"/>
+                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="21"/>
+                                    <state key="normal" title="3">
+                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <state key="selected">
+                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <state key="highlighted">
+                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="highlightBackgroundColor">
+                                            <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="passcodeSign" value="3"/>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="passcodeSignButtonTap:" destination="-1" eventType="touchUpInside" id="3Da-N1-Usq"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Ced-bT-nWT">
+                            <rect key="frame" x="0.0" y="95" width="275" height="85.5"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aGU-NB-in6" customClass="PasscodeSignButton" customModule="SwiftPasscodeLock">
+                                    <rect key="frame" x="0.0" y="0.0" width="81.5" height="85.5"/>
+                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="21"/>
+                                    <state key="normal" title="4">
+                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <state key="selected">
+                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <state key="highlighted">
+                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="highlightBackgroundColor">
+                                            <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="passcodeSign" value="4"/>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="passcodeSignButtonTap:" destination="-1" eventType="touchUpInside" id="HN8-H3-Rhr"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kak-KB-Nc0" customClass="PasscodeSignButton" customModule="SwiftPasscodeLock">
+                                    <rect key="frame" x="96.5" y="0.0" width="82" height="85.5"/>
+                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="21"/>
+                                    <state key="normal" title="5">
+                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <state key="selected">
+                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <state key="highlighted">
+                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="highlightBackgroundColor">
+                                            <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="passcodeSign" value="5"/>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="passcodeSignButtonTap:" destination="-1" eventType="touchUpInside" id="jGm-wI-r8j"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YmN-If-dEn" customClass="PasscodeSignButton" customModule="SwiftPasscodeLock">
+                                    <rect key="frame" x="193.5" y="0.0" width="81.5" height="85.5"/>
+                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="21"/>
+                                    <state key="normal" title="6">
+                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <state key="selected">
+                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <state key="highlighted">
+                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="highlightBackgroundColor">
+                                            <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="passcodeSign" value="6"/>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="passcodeSignButtonTap:" destination="-1" eventType="touchUpInside" id="cHb-ei-GZ0"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="6xp-cd-k1b">
+                            <rect key="frame" x="0.0" y="190.5" width="275" height="85.5"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Twx-DL-qQQ" customClass="PasscodeSignButton" customModule="SwiftPasscodeLock">
+                                    <rect key="frame" x="0.0" y="0.0" width="81.5" height="85.5"/>
+                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="21"/>
+                                    <state key="normal" title="7">
+                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <state key="selected">
+                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <state key="highlighted">
+                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="highlightBackgroundColor">
+                                            <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="passcodeSign" value="7"/>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="passcodeSignButtonTap:" destination="-1" eventType="touchUpInside" id="ROL-CT-gEv"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nco-K9-Ef6" customClass="PasscodeSignButton" customModule="SwiftPasscodeLock">
+                                    <rect key="frame" x="96.5" y="0.0" width="82" height="85.5"/>
+                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="21"/>
+                                    <state key="normal" title="8">
+                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <state key="selected">
+                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <state key="highlighted">
+                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="highlightBackgroundColor">
+                                            <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="passcodeSign" value="8"/>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="passcodeSignButtonTap:" destination="-1" eventType="touchUpInside" id="vPD-Di-q9U"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PN1-6A-47Z" customClass="PasscodeSignButton" customModule="SwiftPasscodeLock">
+                                    <rect key="frame" x="193.5" y="0.0" width="81.5" height="85.5"/>
+                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="21"/>
+                                    <state key="normal" title="9">
+                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <state key="selected">
+                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <state key="highlighted">
+                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="highlightBackgroundColor">
+                                            <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="passcodeSign" value="9"/>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="passcodeSignButtonTap:" destination="-1" eventType="touchUpInside" id="zjk-Gu-Rfd"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Cl7-Q3-2Yn">
+                            <rect key="frame" x="0.0" y="286" width="275" height="85"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7HB-pz-rvy">
+                                    <rect key="frame" x="0.0" y="0.0" width="81.5" height="85"/>
+                                    <inset key="contentEdgeInsets" minX="4" minY="4" maxX="4" maxY="4"/>
+                                    <state key="normal" title="Отмена">
+                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="cancelButtonTap:" destination="-1" eventType="touchUpInside" id="0Ab-Op-7Ac"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zCq-5Y-z1n" customClass="PasscodeSignButton" customModule="SwiftPasscodeLock">
+                                    <rect key="frame" x="96.5" y="0.0" width="82" height="85"/>
+                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="21"/>
+                                    <state key="normal" title="0">
+                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <state key="selected">
+                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <state key="highlighted">
+                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="highlightBackgroundColor">
+                                            <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="passcodeSign" value="0"/>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="passcodeSignButtonTap:" destination="-1" eventType="touchUpInside" id="E5Q-oE-cdX"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Ad-3Z-4Xe">
+                                    <rect key="frame" x="193.5" y="0.0" width="81.5" height="85"/>
+                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <inset key="contentEdgeInsets" minX="4" minY="4" maxX="4" maxY="4"/>
+                                    <state key="normal" title="Удалить">
+                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <state key="disabled">
+                                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="deleteSignButtonTap:" destination="-1" eventType="touchUpInside" id="IAL-4L-LIN"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="M1t-dC-9y3" secondAttribute="height" multiplier="20:27" id="TMM-e5-gNP"/>
+                    </constraints>
+                </stackView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tkG-4B-7tl" userLabel="TouchID Button">
+                    <rect key="frame" x="20" y="564" width="335" height="26"/>
+                    <inset key="contentEdgeInsets" minX="4" minY="4" maxX="4" maxY="4"/>
+                    <state key="normal" title="Touch ID / Face ID">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="touchIDButtonTap:" destination="-1" eventType="touchUpInside" id="DBT-1U-QYt"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="M1t-dC-9y3" firstAttribute="leading" secondItem="U3i-MV-Me2" secondAttribute="leading" constant="50" id="0Yf-wW-LcC"/>
+                <constraint firstItem="f9C-Zo-5PZ" firstAttribute="leading" secondItem="U3i-MV-Me2" secondAttribute="leading" constant="20" id="1Pu-LP-Mea"/>
+                <constraint firstItem="XoH-bz-MuV" firstAttribute="leading" secondItem="U3i-MV-Me2" secondAttribute="leading" constant="20" id="1TS-DE-jiE"/>
+                <constraint firstItem="f9C-Zo-5PZ" firstAttribute="top" secondItem="XoH-bz-MuV" secondAttribute="bottom" constant="10" id="1Zc-Ce-cVR"/>
+                <constraint firstAttribute="trailing" secondItem="XoH-bz-MuV" secondAttribute="trailing" constant="20" id="CaF-v3-YGQ"/>
+                <constraint firstItem="XoH-bz-MuV" firstAttribute="top" relation="greaterThanOrEqual" secondItem="U3i-MV-Me2" secondAttribute="top" constant="15" id="FXi-0Z-T8t"/>
+                <constraint firstItem="tkG-4B-7tl" firstAttribute="top" secondItem="M1t-dC-9y3" secondAttribute="bottom" constant="15" id="H9g-Co-fTQ"/>
+                <constraint firstAttribute="trailing" secondItem="f9C-Zo-5PZ" secondAttribute="trailing" constant="20" id="OtM-N0-xyL"/>
+                <constraint firstAttribute="trailing" secondItem="M1t-dC-9y3" secondAttribute="trailing" constant="50" id="R3d-Pk-MYG"/>
+                <constraint firstItem="M1t-dC-9y3" firstAttribute="centerY" secondItem="U3i-MV-Me2" secondAttribute="centerY" constant="30" id="UYO-DO-nBK"/>
+                <constraint firstItem="M1t-dC-9y3" firstAttribute="top" secondItem="rQy-DL-8iB" secondAttribute="bottom" constant="15" id="Wxf-EK-MIV"/>
+                <constraint firstAttribute="trailing" secondItem="tkG-4B-7tl" secondAttribute="trailing" constant="20" id="Wzp-tM-dNi"/>
+                <constraint firstItem="rQy-DL-8iB" firstAttribute="top" secondItem="f9C-Zo-5PZ" secondAttribute="bottom" constant="20" id="aTj-fc-ddk"/>
+                <constraint firstItem="rQy-DL-8iB" firstAttribute="centerX" secondItem="U3i-MV-Me2" secondAttribute="centerX" id="qSb-gg-tkL"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="tkG-4B-7tl" secondAttribute="bottom" constant="15" id="uo9-c4-gSO"/>
+                <constraint firstItem="tkG-4B-7tl" firstAttribute="leading" secondItem="U3i-MV-Me2" secondAttribute="leading" constant="20" id="vNv-uH-VbD"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fpo-rR-xxc"/>
+            <point key="canvasLocation" x="920.79999999999995" y="465.51724137931041"/>
+        </view>
+    </objects>
+</document>

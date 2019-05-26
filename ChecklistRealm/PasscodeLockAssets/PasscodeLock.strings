@@ -30,4 +30,4 @@
 "PasscodeLockTouchIDReason" = "Требуется аутентификация для продолжения";
 
 /* Touch ID Fallback Button */
-"PasscodeLockTouchIDButton" = "Ввести пароль";
+"PasscodeLockTouchIDButton" = "";
