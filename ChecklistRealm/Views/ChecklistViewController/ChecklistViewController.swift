@@ -43,8 +43,8 @@ class ChecklistViewController: UIViewController {
         ChecklistFunctions.shared.sortChecklistItems(in: data!)
         
         let secondTabNavController = self.tabBarController?.viewControllers![1] as! UINavigationController
-        let secontTab = secondTabNavController.topViewController as! SettingsTableViewController
-        secontTab.data = data
+        let secondTab = secondTabNavController.topViewController as! SettingsTableViewController
+        secondTab.data = data
         
         notificationToken = data?.checklistItems.observe { [weak self] (changes) in
             guard let tableView = self?.checklistTableView else { return }

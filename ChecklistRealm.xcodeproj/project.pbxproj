@@ -18,6 +18,8 @@
 		CF003143227C9BD7002DA167 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF003140227C9BD7002DA167 /* Data.swift */; };
 		CF1CACD92289B6D900DE944A /* SettingsTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF1CACD82289B6D900DE944A /* SettingsTableViewController.storyboard */; };
 		CF1CACDC2289C96B00DE944A /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1CACDB2289C96B00DE944A /* SettingsTableViewController.swift */; };
+		CF41FEBF22A5039E00A3C5CD /* NotificationsTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF41FEBE22A5039E00A3C5CD /* NotificationsTableViewController.storyboard */; };
+		CF41FEC122A503B800A3C5CD /* NotificationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF41FEC022A503B800A3C5CD /* NotificationsTableViewController.swift */; };
 		CF81CEEB229AD8CA0043A736 /* PasscodeLock.strings in Resources */ = {isa = PBXBuildFile; fileRef = CF81CEEA229AD8CA0043A736 /* PasscodeLock.strings */; };
 		CF81CEEE229ADB480043A736 /* PasscodeLockConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF81CEED229ADB480043A736 /* PasscodeLockConfiguration.swift */; };
 		CF81CEF0229ADCD10043A736 /* UserDefaultsPasscodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF81CEEF229ADCD10043A736 /* UserDefaultsPasscodeRepository.swift */; };
@@ -43,6 +45,8 @@
 		CF003140227C9BD7002DA167 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		CF1CACD82289B6D900DE944A /* SettingsTableViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SettingsTableViewController.storyboard; path = ChecklistRealm/Views/SettingsTableViewController/SettingsTableViewController.storyboard; sourceTree = SOURCE_ROOT; };
 		CF1CACDB2289C96B00DE944A /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		CF41FEBE22A5039E00A3C5CD /* NotificationsTableViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NotificationsTableViewController.storyboard; sourceTree = "<group>"; };
+		CF41FEC022A503B800A3C5CD /* NotificationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsTableViewController.swift; sourceTree = "<group>"; };
 		CF81CEEA229AD8CA0043A736 /* PasscodeLock.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = PasscodeLock.strings; path = ChecklistRealm/PasscodeLockAssets/PasscodeLock.strings; sourceTree = SOURCE_ROOT; };
 		CF81CEED229ADB480043A736 /* PasscodeLockConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeLockConfiguration.swift; sourceTree = "<group>"; };
 		CF81CEEF229ADCD10043A736 /* UserDefaultsPasscodeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsPasscodeRepository.swift; sourceTree = "<group>"; };
@@ -127,11 +131,21 @@
 		CF1CACDA2289C92300DE944A /* SettingsTableViewController */ = {
 			isa = PBXGroup;
 			children = (
+				CF41FEBD22A5036500A3C5CD /* NotificationsTableViewController */,
 				CFE6F3A4229A93EB00D3905E /* AuthTableViewController */,
 				CF1CACD82289B6D900DE944A /* SettingsTableViewController.storyboard */,
 				CF1CACDB2289C96B00DE944A /* SettingsTableViewController.swift */,
 			);
 			path = SettingsTableViewController;
+			sourceTree = "<group>";
+		};
+		CF41FEBD22A5036500A3C5CD /* NotificationsTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CF41FEBE22A5039E00A3C5CD /* NotificationsTableViewController.storyboard */,
+				CF41FEC022A503B800A3C5CD /* NotificationsTableViewController.swift */,
+			);
+			path = NotificationsTableViewController;
 			sourceTree = "<group>";
 		};
 		CF81CEEC229ADB270043A736 /* PasscodeLockAssets */ = {
@@ -248,6 +262,7 @@
 			files = (
 				CFAA5566227C902200960651 /* LaunchScreen.storyboard in Resources */,
 				CFAA5563227C902200960651 /* Assets.xcassets in Resources */,
+				CF41FEBF22A5039E00A3C5CD /* NotificationsTableViewController.storyboard in Resources */,
 				CF003138227C9B5B002DA167 /* ChecklistViewController.storyboard in Resources */,
 				CF81CEF2229B37CB0043A736 /* PasscodeLockView.xib in Resources */,
 				CF1CACD92289B6D900DE944A /* SettingsTableViewController.storyboard in Resources */,
@@ -315,6 +330,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF41FEC122A503B800A3C5CD /* NotificationsTableViewController.swift in Sources */,
 				CF003143227C9BD7002DA167 /* Data.swift in Sources */,
 				CF00313A227C9B5B002DA167 /* AddItemTableViewController.swift in Sources */,
 				CF003142227C9BD7002DA167 /* ChecklistItem.swift in Sources */,
