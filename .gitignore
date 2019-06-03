@@ -1,0 +1,3 @@
+!*.xcodeproj/xcshareddata/
+!*.xcworkspace/xcuserdata/
+Pods/
