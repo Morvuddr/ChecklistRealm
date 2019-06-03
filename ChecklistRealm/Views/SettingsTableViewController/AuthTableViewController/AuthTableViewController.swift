@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwiftPasscodeLock
 
 protocol AuthTableViewControllerDelegate: class {
     func authTableViewControllerDidFinishEditingSettings(_ controller: AuthTableViewController)

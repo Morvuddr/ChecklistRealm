@@ -7,6 +7,5 @@ target 'ChecklistRealm' do
 
   # Pods for ChecklistRealm
   pod 'RealmSwift'
-  pod 'SwiftPasscodeLock'
 
 end

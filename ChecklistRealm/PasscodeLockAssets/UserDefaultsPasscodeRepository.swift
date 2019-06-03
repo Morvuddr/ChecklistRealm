@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftPasscodeLock
 
 class UserDefaultsPasscodeRepository: PasscodeRepositoryType {
     

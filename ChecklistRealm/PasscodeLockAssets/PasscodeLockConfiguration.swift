@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftPasscodeLock
 
 struct PasscodeLockConfiguration: PasscodeLockConfigurationType {
     

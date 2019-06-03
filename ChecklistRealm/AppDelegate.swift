@@ -8,7 +8,6 @@
 
 import UIKit
 import UserNotifications
-import SwiftPasscodeLock
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
