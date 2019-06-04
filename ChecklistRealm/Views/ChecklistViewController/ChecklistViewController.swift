@@ -85,9 +85,8 @@ class ChecklistViewController: UIViewController {
     }
     
     func showAddNewItemTableViewController(_ itemToEdit: ChecklistItem? = nil, _ indexToEdit: Int? = nil){
-        // Returns the initial view controller on a storyboard
-        let storyboard = UIStoryboard(name: String(describing: AddItemTableViewController.self), bundle: nil)
-        let viewController = storyboard.instantiateInitialViewController() as! AddItemTableViewController
+        
+        let viewController = AddItemTableViewController.getInstance() as! AddItemTableViewController
         viewController.delegate = self
         viewController.data = data
         

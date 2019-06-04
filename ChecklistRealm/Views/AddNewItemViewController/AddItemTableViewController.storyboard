@@ -31,9 +31,8 @@
                                                     <rect key="frame" x="16" y="11" width="343" height="22"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
                                                     <connections>
-                                                        <action selector="done" destination="wLN-az-CmF" eventType="editingDidEndOnExit" id="F5r-H8-I8g"/>
                                                         <outlet property="delegate" destination="wLN-az-CmF" id="q2O-t3-SIV"/>
                                                     </connections>
                                                 </textField>

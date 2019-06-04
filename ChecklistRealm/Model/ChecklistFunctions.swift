@@ -215,4 +215,18 @@ class ChecklistFunctions {
         }
     }
     
+    // MARK: - Returns the date in string format
+    
+    func createStringFromDate(_ date: Date) -> String {
+        
+        // initialize the date formatter and set the style
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        formatter.dateStyle = .long
+        formatter.locale = Locale(identifier: "ru_RU")
+        
+        // get the date time String from the date object
+        return formatter.string(from: date)
+    }
+    
 }

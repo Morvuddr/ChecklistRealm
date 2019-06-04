@@ -74,17 +74,19 @@ class AddItemTableViewController: UITableViewController {
             dateLabel.text = item.dateStr
             doneBarItem.isEnabled = true
             location = CLLocationCoordinate2D(latitude: item.latitude, longitude: item.longitude)
-            centerViewOnItemLocation()
+            self.centerViewOnItemLocation()
             shouldRemindSwitch.isOn = item.shouldRemind
             if shouldRemindSwitch.isOn {
                 dueDate = item.dueDate
                 showDateCell()
             }
         } else {
-            currentDate = Date()
-            dateLabel.text = createStringFromDate(currentDate!)
-            checkLocationServices()
-            centerViewOnItemLocation()
+            DispatchQueue.main.async {
+                self.currentDate = Date()
+                self.dateLabel.text = ChecklistFunctions.shared.createStringFromDate(self.currentDate!)
+                self.checkLocationServices()
+                self.centerViewOnItemLocation()
+            }
         }
     }
     
@@ -102,28 +104,20 @@ class AddItemTableViewController: UITableViewController {
     
     @IBAction func done() {
         mapView.removeAnnotation(annotation)
+        
+        let newTitle = titleTextField.text!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        let newAdditionalInfo = additionalInfoTextView.text.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        
         if let itemToEdit = itemToEdit {
             
-            ChecklistFunctions.shared.updateChecklistItem(at: indexToEdit!, title: titleTextField.text!,additionalInfo: additionalInfoTextView.text, dueDate: dueDate, shouldRemind: shouldRemindSwitch.isOn, in: data!)
+            ChecklistFunctions.shared.updateChecklistItem(at: indexToEdit!, title: newTitle, additionalInfo: newAdditionalInfo, dueDate: dueDate, shouldRemind: shouldRemindSwitch.isOn, in: data!)
             
             delegate?.addItemTableViewController(self, didFinishEditing: itemToEdit, indexToEdit!)
             
         } else {
-            let item = ChecklistItem(titleTextField.text!, currentDate!, dateLabel.text!, additionalInfoTextView.text, false, location.latitude, location.longitude, dueDate, shouldRemindSwitch.isOn)
+            let item = ChecklistItem(newTitle, currentDate!, dateLabel.text!, newAdditionalInfo, false, location.latitude, location.longitude, dueDate, shouldRemindSwitch.isOn)
             delegate?.addItemTableViewController(self, didFinishAdding: item)
         }
-    }
-    
-    func createStringFromDate(_ date: Date) -> String {
-
-        // initialize the date formatter and set the style
-        let formatter = DateFormatter()
-        formatter.timeStyle = .short
-        formatter.dateStyle = .long
-        formatter.locale = Locale(identifier: "ru_RU")
-        
-        // get the date time String from the date object
-        return formatter.string(from: date)
     }
     
     @IBAction func shouldRemindAction(_ sender: UISwitch) {
@@ -148,14 +142,14 @@ class AddItemTableViewController: UITableViewController {
         
         if let dueDate = dueDate {
             
-            dueDateLabel.text = createStringFromDate(dueDate)
+            dueDateLabel.text = ChecklistFunctions.shared.createStringFromDate(dueDate)
             
         } else {
             
             var dateComponent = DateComponents()
             dateComponent.hour = 1
             self.dueDate = Calendar.current.date(byAdding: dateComponent, to: Date())
-            dueDateLabel.text = createStringFromDate(dueDate!)
+            dueDateLabel.text = ChecklistFunctions.shared.createStringFromDate(dueDate!)
             
         }
         
@@ -191,7 +185,7 @@ class AddItemTableViewController: UITableViewController {
     
     @IBAction func dateChanged(_ datePicker: UIDatePicker) {
         dueDate = datePicker.date
-        dueDateLabel.text = createStringFromDate(dueDate!)
+        dueDateLabel.text = ChecklistFunctions.shared.createStringFromDate(dueDate!)
     }
     
     // MARK:-  TableViewDelegate Methods
@@ -296,7 +290,7 @@ extension AddItemTableViewController: UITextFieldDelegate {
         let oldText = textField.text!
         let stringRange = Range(range, in:oldText)!
         let newText = oldText.replacingCharacters(in: stringRange, with: string)
-        if newText.isEmpty || additionalInfoTextView.text.isEmpty {
+        if newText.isEmpty || newText.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).isEmpty || additionalInfoTextView.text.isEmpty {
             doneBarItem.isEnabled = false
         } else {
             doneBarItem.isEnabled = true
@@ -324,7 +318,7 @@ extension AddItemTableViewController: UITextViewDelegate {
         let oldText = textView.text!
         let stringRange = Range(range, in:oldText)!
         let newText = oldText.replacingCharacters(in: stringRange, with: text)
-        if newText.isEmpty || titleTextField.text?.isEmpty ?? true {
+        if newText.isEmpty || newText.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).isEmpty || titleTextField.text?.isEmpty ?? true {
             doneBarItem.isEnabled = false
         } else {
             doneBarItem.isEnabled = true
@@ -334,7 +328,7 @@ extension AddItemTableViewController: UITextViewDelegate {
     
 }
 
-extension AddItemTableViewController {
+extension AddItemTableViewController: CLLocationManagerDelegate {
     
     func centerViewOnItemLocation(){
         let region = MKCoordinateRegion(center: location, latitudinalMeters: 150, longitudinalMeters: 150)
@@ -361,6 +355,7 @@ extension AddItemTableViewController {
     }
     
     func setupLocationManager(){
+        locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
     
@@ -418,23 +413,12 @@ extension AddItemTableViewController {
         }
     }
     
-}
-
-extension String {
-    func heightWithConstrainedWidth(width: CGFloat, font: UIFont) -> CGFloat {
-        let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
-        let boundingBox = self.boundingRect(with: constraintRect, options: [.usesFontLeading, .usesLineFragmentOrigin], attributes: [NSAttributedString.Key.font: font], context: nil)
-        
-        return boundingBox.height
-    }
-}
-
-@IBDesignable class ZeroPaddingTextView: UITextView {
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        textContainerInset = UIEdgeInsets.zero
-        textContainer.lineFragmentPadding = 0
+    func locationManager(_ manager: CLLocationManager,
+                         didChangeAuthorization status: CLAuthorizationStatus){
+        DispatchQueue.main.async {
+            self.checkLocationAuthorization()
+            self.centerViewOnItemLocation()
+        }
     }
     
 }

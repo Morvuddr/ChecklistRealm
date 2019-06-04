@@ -51,9 +51,8 @@ class SettingsTableViewController: UITableViewController {
 
         if indexPath.section == 0 && indexPath.row == 0 {
             self.tableView.deselectRow(at: indexPath, animated: true)
-            // Returns the initial view controller on a storyboard
-            let storyboard = UIStoryboard(name: String(describing: NotificationsTableViewController.self), bundle: nil)
-            let viewController = storyboard.instantiateInitialViewController() as! NotificationsTableViewController
+            
+            let viewController = NotificationsTableViewController.getInstance() as! NotificationsTableViewController
             viewController.delegate = self
             viewController.data = self.data
             
@@ -62,9 +61,8 @@ class SettingsTableViewController: UITableViewController {
         }
         if indexPath.section == 1 && indexPath.row == 0 {
             self.tableView.deselectRow(at: indexPath, animated: true)
-            // Returns the initial view controller on a storyboard
-            let storyboard = UIStoryboard(name: String(describing: AuthTableViewController.self), bundle: nil)
-            let viewController = storyboard.instantiateInitialViewController() as! AuthTableViewController
+            
+            let viewController = AuthTableViewController.getInstance() as! AuthTableViewController
             viewController.delegate = self
             
             self.hidesBottomBarWhenPushed = true

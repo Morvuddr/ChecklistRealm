@@ -41,8 +41,11 @@
 		CFAA555C227C902100960651 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAA555B227C902100960651 /* AppDelegate.swift */; };
 		CFAA5563227C902200960651 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFAA5562227C902200960651 /* Assets.xcassets */; };
 		CFAA5566227C902200960651 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFAA5564227C902200960651 /* LaunchScreen.storyboard */; };
+		CFBBF9AA22A69E940056525E /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBBF9A922A69E940056525E /* UIViewControllerExtension.swift */; };
 		CFE6F3A6229A943E00D3905E /* AuthTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFE6F3A5229A943E00D3905E /* AuthTableViewController.storyboard */; };
 		CFE6F3A8229A944C00D3905E /* AuthTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE6F3A7229A944C00D3905E /* AuthTableViewController.swift */; };
+		CFF09B5F22A6881B00134CDD /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF09B5E22A6881B00134CDD /* StringExtension.swift */; };
+		CFF09B6122A6885600134CDD /* ZeroPaddingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF09B6022A6885600134CDD /* ZeroPaddingTextView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,8 +88,11 @@
 		CFAA5562227C902200960651 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CFAA5565227C902200960651 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CFAA5567227C902200960651 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CFBBF9A922A69E940056525E /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		CFE6F3A5229A943E00D3905E /* AuthTableViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AuthTableViewController.storyboard; sourceTree = "<group>"; };
 		CFE6F3A7229A944C00D3905E /* AuthTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTableViewController.swift; sourceTree = "<group>"; };
+		CFF09B5E22A6881B00134CDD /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		CFF09B6022A6885600134CDD /* ZeroPaddingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeroPaddingTextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -263,13 +269,13 @@
 		CFAA555A227C902100960651 /* ChecklistRealm */ = {
 			isa = PBXGroup;
 			children = (
-				CFAA555B227C902100960651 /* AppDelegate.swift */,
-				CFAA5562227C902200960651 /* Assets.xcassets */,
 				CFAA5567227C902200960651 /* Info.plist */,
+				CFAA555B227C902100960651 /* AppDelegate.swift */,
 				CFAA5564227C902200960651 /* LaunchScreen.storyboard */,
-				CF41FEED22A5191000A3C5CD /* SwiftPasscodeLock */,
-				CF81CEEC229ADB270043A736 /* PasscodeLockAssets */,
 				CF00313D227C9BD7002DA167 /* Model */,
+				CF81CEEC229ADB270043A736 /* PasscodeLockAssets */,
+				CFF09B6622A69D9B00134CDD /* Resources */,
+				CF41FEED22A5191000A3C5CD /* SwiftPasscodeLock */,
 				CF00312F227C9B5B002DA167 /* Views */,
 			);
 			path = ChecklistRealm;
@@ -282,6 +288,25 @@
 				CFE6F3A7229A944C00D3905E /* AuthTableViewController.swift */,
 			);
 			path = AuthTableViewController;
+			sourceTree = "<group>";
+		};
+		CFF09B5D22A687FE00134CDD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CFF09B5E22A6881B00134CDD /* StringExtension.swift */,
+				CFF09B6022A6885600134CDD /* ZeroPaddingTextView.swift */,
+				CFBBF9A922A69E940056525E /* UIViewControllerExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CFF09B6622A69D9B00134CDD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CFAA5562227C902200960651 /* Assets.xcassets */,
+				CFF09B5D22A687FE00134CDD /* Extensions */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -417,6 +442,7 @@
 				CF41FEC122A503B800A3C5CD /* NotificationsTableViewController.swift in Sources */,
 				CF41FF0B22A5191100A3C5CD /* PasscodeLock.swift in Sources */,
 				CF41FF0922A5191100A3C5CD /* ChangePasscodeState.swift in Sources */,
+				CFF09B5F22A6881B00134CDD /* StringExtension.swift in Sources */,
 				CF41FF1022A5191100A3C5CD /* PasscodeLockType.swift in Sources */,
 				CF003143227C9BD7002DA167 /* Data.swift in Sources */,
 				CF41FF0822A5191100A3C5CD /* ConfirmPasscodeState.swift in Sources */,
@@ -426,6 +452,7 @@
 				CF81CEEE229ADB480043A736 /* PasscodeLockConfiguration.swift in Sources */,
 				CF41FF0722A5191100A3C5CD /* Functions.swift in Sources */,
 				CF41FF1122A5191100A3C5CD /* PasscodeLockConfigurationType.swift in Sources */,
+				CFBBF9AA22A69E940056525E /* UIViewControllerExtension.swift in Sources */,
 				CFAA555C227C902100960651 /* AppDelegate.swift in Sources */,
 				CF81CEF0229ADCD10043A736 /* UserDefaultsPasscodeRepository.swift in Sources */,
 				CF1CACDC2289C96B00DE944A /* SettingsTableViewController.swift in Sources */,
@@ -434,6 +461,7 @@
 				CF003137227C9B5B002DA167 /* ChecklistViewController.swift in Sources */,
 				CF41FF1522A5191100A3C5CD /* PasscodeLockViewController.swift in Sources */,
 				CF41FF1322A5191100A3C5CD /* PasscodeLockStateType.swift in Sources */,
+				CFF09B6122A6885600134CDD /* ZeroPaddingTextView.swift in Sources */,
 				CF41FF1422A5191100A3C5CD /* PasscodeLockPresenter.swift in Sources */,
 				CF003141227C9BD7002DA167 /* ChecklistFunctions.swift in Sources */,
 				CF003139227C9B5B002DA167 /* ChecklistTableViewCell.swift in Sources */,
@@ -579,6 +607,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 99T3A45NBN;
 				INFOPLIST_FILE = ChecklistRealm/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -598,6 +627,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 99T3A45NBN;
 				INFOPLIST_FILE = ChecklistRealm/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
