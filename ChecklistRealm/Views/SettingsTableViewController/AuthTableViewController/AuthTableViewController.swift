@@ -51,7 +51,7 @@ class AuthTableViewController: UITableViewController {
     func updatePasscodeView() {
         
         usingPasscodeSwitch.isOn = configuration.repository.hasPasscode
-        usingOfBiometricSwitch.isOn = UserDefaults.standard.bool(forKey: "isTouchIDAllowed")
+        usingOfBiometricSwitch.isOn = NSUbiquitousKeyValueStore.default.bool(forKey: "isTouchIDAllowed")
         
         if usingPasscodeSwitch.isOn {
 
@@ -84,7 +84,7 @@ class AuthTableViewController: UITableViewController {
             
             passcodeVC.successCallback = { lock in
                 lock.repository.deletePasscode()
-                UserDefaults.standard.set(false, forKey: "isTouchIDAllowed")
+                NSUbiquitousKeyValueStore.default.set(false, forKey: "isTouchIDAllowed")
                 DispatchQueue.main.async {
                     self.updatePasscodeView()
                 }
@@ -99,7 +99,7 @@ class AuthTableViewController: UITableViewController {
         if !additionalSettingVisible {
             additionalSettingVisible = true
             tableView.insertRows(at: [IndexPath(row: 1, section: 0),IndexPath(row: 2, section: 0)], with: .fade)
-            usingOfBiometricSwitch.isOn = UserDefaults.standard.bool(forKey: "isTouchIDAllowed")
+            usingOfBiometricSwitch.isOn = NSUbiquitousKeyValueStore.default.bool(forKey: "isTouchIDAllowed")
         }
     }
     func hideAdditionalSettings(){
@@ -112,9 +112,9 @@ class AuthTableViewController: UITableViewController {
     }
     @IBAction func usingOfBiometricsSwitchAction(_ sender: UISwitch) {
         if usingOfBiometricSwitch.isOn {
-            UserDefaults.standard.set(true, forKey: "isTouchIDAllowed")
+            NSUbiquitousKeyValueStore.default.set(true, forKey: "isTouchIDAllowed")
         } else {
-            UserDefaults.standard.set(false, forKey: "isTouchIDAllowed")
+            NSUbiquitousKeyValueStore.default.set(false, forKey: "isTouchIDAllowed")
         }
     }
     

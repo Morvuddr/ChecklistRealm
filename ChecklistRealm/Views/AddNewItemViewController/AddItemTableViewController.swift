@@ -37,7 +37,7 @@ class AddItemTableViewController: UITableViewController {
     var indexToEdit: Int?
     
     weak var delegate: AddItemTableViewControllerDelegate?
-    var data: Data?
+    var data: ChecklistData?
     
     let locationManager = CLLocationManager()
     var location = CLLocationCoordinate2D(latitude: CLLocationDegrees(0), longitude: CLLocationDegrees(0))
@@ -71,7 +71,7 @@ class AddItemTableViewController: UITableViewController {
             title = "Подробно"
             titleTextField.text = item.title
             additionalInfoTextView.text = item.additionalInfo
-            dateLabel.text = item.dateStr
+            dateLabel.text = ChecklistFunctions.shared.createStringFromDate(item.date)
             doneBarItem.isEnabled = true
             location = CLLocationCoordinate2D(latitude: item.latitude, longitude: item.longitude)
             self.centerViewOnItemLocation()
@@ -115,7 +115,7 @@ class AddItemTableViewController: UITableViewController {
             delegate?.addItemTableViewController(self, didFinishEditing: itemToEdit, indexToEdit!)
             
         } else {
-            let item = ChecklistItem(newTitle, currentDate!, dateLabel.text!, newAdditionalInfo, false, location.latitude, location.longitude, dueDate, shouldRemindSwitch.isOn)
+            let item = ChecklistItem(newTitle, currentDate!, newAdditionalInfo, false, location.latitude, location.longitude, dueDate, shouldRemindSwitch.isOn)
             delegate?.addItemTableViewController(self, didFinishAdding: item)
         }
     }
@@ -125,10 +125,12 @@ class AddItemTableViewController: UITableViewController {
         additionalInfoTextView.resignFirstResponder()
         if shouldRemindSwitch.isOn {
             showDateCell()
-            let center = UNUserNotificationCenter.current()
-            center.requestAuthorization(options: [.alert, .sound]) {
-                granted, error in
-                // do nothing
+            DispatchQueue.main.async {
+                let center = UNUserNotificationCenter.current()
+                center.requestAuthorization(options: [.alert, .sound]) {
+                    granted, error in
+                    // do nothing
+                }
             }
         } else {
             hideDateCell()
@@ -343,12 +345,12 @@ extension AddItemTableViewController: CLLocationManagerDelegate {
             checkLocationAuthorization()
         } else {
             
-            if !UserDefaults.standard.bool(forKey: "locationOff"){
+            if !NSUbiquitousKeyValueStore.default.bool(forKey: "locationOff"){
             let alert = UIAlertController(title: "Службы геолокации отключены", message: "Пожалуйста, перейдите в Настройки, чтобы изменить это.", preferredStyle: .alert)
             
             let okButton = UIAlertAction(title: "Понятно", style: .default, handler: nil)
             alert.addAction(okButton)
-            UserDefaults.standard.set(true, forKey: "locationOff")
+            NSUbiquitousKeyValueStore.default.set(true, forKey: "locationOff")
             self.present(alert, animated: true)
             }
         }
@@ -367,21 +369,21 @@ extension AddItemTableViewController: CLLocationManagerDelegate {
             
         case .restricted:
             
-            if !UserDefaults.standard.bool(forKey: "locationRestricted"){
+            if !NSUbiquitousKeyValueStore.default.bool(forKey: "locationRestricted"){
             
             let alert = UIAlertController(title: "Использование геопозиции ограничено", message: "Доступ к геопозиции ограничен и локация не может быть получена", preferredStyle: .alert)
             
             let okButton = UIAlertAction(title: "Понятно", style: .default, handler: nil)
             alert.addAction(okButton)
             
-            UserDefaults.standard.set(true, forKey: "locationRestricted")
+            NSUbiquitousKeyValueStore.default.set(true, forKey: "locationRestricted")
             self.present(alert, animated: true)
                 
             }
             
         case .denied:
             
-            if !UserDefaults.standard.bool(forKey: "locationDenied"){
+            if !NSUbiquitousKeyValueStore.default.bool(forKey: "locationDenied"){
             
             let alert = UIAlertController(title: "Доступ к геопозиции запрещен", message: "Запрос на доступ к геопозиции был отклонен. Пожалуйста, перейдите в Настройки, чтобы изменить это.", preferredStyle: .alert)
             
@@ -397,7 +399,7 @@ extension AddItemTableViewController: CLLocationManagerDelegate {
             alert.addAction(goToSettingsAction)
             alert.addAction(cancelAction)
             
-            UserDefaults.standard.set(true, forKey: "locationDenied")
+            NSUbiquitousKeyValueStore.default.set(true, forKey: "locationDenied")
             self.present(alert, animated: true)
                 
             }

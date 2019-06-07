@@ -20,12 +20,12 @@ class ChecklistFunctions {
         return try! Realm()
     }()
     
-    var currentSchemaVersion: UInt64 = 2
+    var currentSchemaVersion: UInt64 = 3
     
     
     func createData(){
         
-        let data = Data()
+        let data = ChecklistData(id: UUID().uuidString)
         
         do {
             
@@ -39,7 +39,7 @@ class ChecklistFunctions {
         
     }
     
-    func createChecklistItem(_ data: Data,_ checklistItem: ChecklistItem){
+    func createChecklistItem(_ data: ChecklistData,_ checklistItem: ChecklistItem){
         
         do {
             
@@ -53,7 +53,7 @@ class ChecklistFunctions {
         
     }
     
-    func updateChecklistItem(at index: Int, title: String, additionalInfo: String, dueDate: Date?, shouldRemind: Bool, in data: Data){
+    func updateChecklistItem(at index: Int, title: String, additionalInfo: String, dueDate: Date?, shouldRemind: Bool, in data: ChecklistData){
         
         do {
             try realm.write{
@@ -70,12 +70,14 @@ class ChecklistFunctions {
         
     }
     
-    func deleteChecklistItem(at index: Int, in data: Data){
+    func deleteChecklistItem(at index: Int, in data: ChecklistData){
         
         do {
             try realm.write{
                 
+                data.checklistItems[index].isDeleted = true
                 data.checklistItems.remove(at: index)
+                
                 
             }
         } catch {
@@ -84,7 +86,7 @@ class ChecklistFunctions {
         
     }
     
-    func sortChecklistItems(in data: Data){
+    func sortChecklistItems(in data: ChecklistData){
         
         do {
             try realm.write{
@@ -106,7 +108,7 @@ class ChecklistFunctions {
         
     }
     
-    func toggleChecked(at index: Int, in data: Data){
+    func toggleChecked(at index: Int, in data: ChecklistData){
         
         do {
             try realm.write{
@@ -134,6 +136,10 @@ class ChecklistFunctions {
                                                 self.migrateFrom1To2(with: migration)
                                             }
                                             
+                                            if oldSchemaVersion < 3{
+                                                self.migrateFrom2To3(with: migration)
+                                            }
+                                            
         })
         Realm.Configuration.defaultConfiguration = config
     }
@@ -154,60 +160,105 @@ class ChecklistFunctions {
         }
     }
     
+    func migrateFrom2To3(with migration: Migration){
+        migration.enumerateObjects(ofType: ChecklistItem.className()) { (oldChecklistItem, newChecklistItem) in
+            let _ = oldChecklistItem?["dateStr"] as! String
+            newChecklistItem?["isDeleted"] = false
+            newChecklistItem?["longitude"] = Double(0)
+        }
+        migration.enumerateObjects(ofType: "Data") { (oldData, newData) in
+//            newData?["isDeleted"] = false
+//            newData?["dataID"] = UUID().uuidString
+            let newChecklistData = migration.create(ChecklistData.className())
+            newChecklistData["isDeleted"] = false
+            newChecklistData["dataID"] = UUID().uuidString
+            
+            if let oldChecklistItems = oldData!["checklistItems"] as? List<MigrationObject>,
+                let newChecklistItems = newChecklistData["checklistItems"] as? List<MigrationObject>{
+                
+                for oldChecklistItem in oldChecklistItems {
+                    let newChecklistItem = migration.create(ChecklistItem.className())
+                    newChecklistItem["itemID"] = oldChecklistItem["itemID"]
+                    newChecklistItem["title"] = oldChecklistItem["title"]
+                    newChecklistItem["date"] = oldChecklistItem["date"]
+                    newChecklistItem["additionalInfo"] = oldChecklistItem["additionalInfo"]
+                    newChecklistItem["checked"] = oldChecklistItem["checked"]
+                    newChecklistItem["latitude"] = oldChecklistItem["latitude"]
+                    newChecklistItem["longitude"] = oldChecklistItem["longitude"]
+                    newChecklistItem["dueDate"] = oldChecklistItem["dueDate"]
+                    newChecklistItem["shouldRemind"] = oldChecklistItem["shouldRemind"]
+                    newChecklistItem["isDeleted"] = oldChecklistItem["isDeleted"]
+                    
+                    newChecklistItems.append(newChecklistItem)
+                    migration.delete(oldChecklistItem)
+                }
+            }
+        }
+        migration.deleteData(forType: "Data")
+    }
+    
     // MARK: - Notifications
     
-    func scheduleNotification(forItemAt index: Int, in data: Data) {
+    func scheduleNotification(forItemAt index: Int, in data: ChecklistData) {
         removeNotification(forItemAt: index, in: data)
-        if let dueDate = data.checklistItems[index].dueDate{
-            if dueDate.timeIntervalSinceNow > 0 && data.checklistItems[index].checked == false && UserDefaults.standard.bool(forKey: "shouldRemind"){
-                
-                let calendar = Calendar(identifier: .gregorian)
-                let diff = calendar.dateComponents([.hour, .minute, .second], from: Date(), to: dueDate)
-                
-                let remindHours = UserDefaults.standard.integer(forKey: "remindHours")
-                let remindMinutes = UserDefaults.standard.integer(forKey: "remindMinutes")
-                
-                let firstSituation = ((remindHours == 0 && remindMinutes > 0) && (diff.minute! > remindMinutes || (diff.minute! == remindMinutes || diff.second! > 0)))
-                
-                let secondSituation = ((remindHours > 0 && remindMinutes == 0) && (diff.hour! > remindHours || (diff.hour! == remindHours && diff.second! > 0)))
-                
-                let thirdSituation = ((remindHours > 0 && remindMinutes > 0) && (diff.hour! > remindHours || (diff.hour! == remindHours && diff.minute! > remindMinutes) || (diff.hour! == remindHours && diff.minute! == remindMinutes && diff.second! > 0)))
-                
-                let fourthSituation = (remindHours == 0 && remindMinutes == 0)
-                
-                if firstSituation || secondSituation || thirdSituation || fourthSituation {
+        if data.checklistItems[index].shouldRemind {
+            let center = UNUserNotificationCenter.current()
+            center.requestAuthorization(options: [.alert, .sound]) {
+                granted, error in
+                // do nothing
+            }
+            
+            if let dueDate = data.checklistItems[index].dueDate{
+                if dueDate.timeIntervalSinceNow > 0 && data.checklistItems[index].checked == false && NSUbiquitousKeyValueStore.default.bool(forKey: "shouldRemind"){
                     
-                    var earlyDate = Calendar.current.date(byAdding: .hour, value: -remindHours, to: dueDate)
-                    earlyDate = Calendar.current.date(byAdding: .minute, value: -remindMinutes, to: earlyDate!)
+                    let calendar = Calendar(identifier: .gregorian)
+                    let diff = calendar.dateComponents([.hour, .minute, .second], from: Date(), to: dueDate)
                     
-                    let components = calendar.dateComponents( [.month, .day, .hour, .minute],
-                                                              from: earlyDate!)
-                    let content = UNMutableNotificationContent()
-                    content.title = "Заканчивается срок у задачи:"
-                    content.body = data.checklistItems[index].title
-                    content.sound = UNNotificationSound.default
+                    let remindHours = Int(NSUbiquitousKeyValueStore.default.longLong(forKey: "remindHours"))
+                    let remindMinutes = Int(NSUbiquitousKeyValueStore.default.longLong(forKey: "remindMinutes"))
                     
-                    let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
+                    let firstSituation = ((remindHours == 0 && remindMinutes > 0) && (diff.minute! > remindMinutes || (diff.minute! == remindMinutes || diff.second! > 0)))
                     
-                    let itemID = data.checklistItems[index].itemID
-                    let request = UNNotificationRequest(identifier: itemID, content: content, trigger: trigger)
+                    let secondSituation = ((remindHours > 0 && remindMinutes == 0) && (diff.hour! > remindHours || (diff.hour! == remindHours && diff.second! > 0)))
                     
-                    let center = UNUserNotificationCenter.current()
-                    center.add(request)
+                    let thirdSituation = ((remindHours > 0 && remindMinutes > 0) && (diff.hour! > remindHours || (diff.hour! == remindHours && diff.minute! > remindMinutes) || (diff.hour! == remindHours && diff.minute! == remindMinutes && diff.second! > 0)))
+                    
+                    let fourthSituation = (remindHours == 0 && remindMinutes == 0)
+                    
+                    if firstSituation || secondSituation || thirdSituation || fourthSituation {
+                        
+                        var earlyDate = Calendar.current.date(byAdding: .hour, value: -remindHours, to: dueDate)
+                        earlyDate = Calendar.current.date(byAdding: .minute, value: -remindMinutes, to: earlyDate!)
+                        
+                        let components = calendar.dateComponents( [.month, .day, .hour, .minute],
+                                                                  from: earlyDate!)
+                        let content = UNMutableNotificationContent()
+                        content.title = "Заканчивается срок у задачи:"
+                        content.body = data.checklistItems[index].title
+                        content.sound = UNNotificationSound.default
+                        
+                        let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
+                        
+                        let itemID = data.checklistItems[index].itemID
+                        let request = UNNotificationRequest(identifier: itemID, content: content, trigger: trigger)
+                        
+                        
+                        center.add(request)
+                    }
                 }
             }
         }
     }
     
-    func removeNotification(forItemAt index: Int, in data: Data){
+    func removeNotification(forItemAt index: Int, in data: ChecklistData){
         let itemID = data.checklistItems[index].itemID
         let center = UNUserNotificationCenter.current()
         center.removePendingNotificationRequests(withIdentifiers: [itemID])
     }
     
-    func updateNotifications(in data: Data){
+    func updateNotifications(in data: ChecklistData){
         for index in 0 ..< data.checklistItems.count{
-            if UserDefaults.standard.bool(forKey: "shouldRemind") {
+            if NSUbiquitousKeyValueStore.default.bool(forKey: "shouldRemind") {
                 scheduleNotification(forItemAt: index, in: data)
             } else {
                 removeNotification(forItemAt: index, in: data)

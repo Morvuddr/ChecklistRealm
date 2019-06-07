@@ -10,7 +10,7 @@ import UIKit
 
 class SettingsTableViewController: UITableViewController {
     
-    var data: Data?
+    var data: ChecklistData?
     
     override func viewDidLoad() {
         super.viewDidLoad()

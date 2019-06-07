@@ -22,7 +22,7 @@ class NotificationsTableViewController: UITableViewController {
     
      weak var delegate: NotificationsTableViewControllerDelegate?
     
-    var data: Data?
+    var data: ChecklistData?
     var dateCellVisible = false
     var datePickerVisible = false
     var shouldRemind = true
@@ -40,11 +40,11 @@ class NotificationsTableViewController: UITableViewController {
     
     func configureTableViewConroller() {
         
-        shouldRemind = UserDefaults.standard.bool(forKey: "shouldRemind")
-        remindHours = UserDefaults.standard.integer(forKey: "remindHours")
-        remindMinutes = UserDefaults.standard.integer(forKey: "remindMinutes")
+        shouldRemind = NSUbiquitousKeyValueStore.default.bool(forKey: "shouldRemind")
+        remindHours = Int(NSUbiquitousKeyValueStore.default.longLong(forKey: "remindHours"))
+        remindMinutes = Int(NSUbiquitousKeyValueStore.default.longLong(forKey: "remindMinutes"))
         
-        if UserDefaults.standard.bool(forKey: "shouldRemind") {
+        if NSUbiquitousKeyValueStore.default.bool(forKey: "shouldRemind") {
             shouldRemindSwitch.isOn = true
             showDateCell()
         } else {
@@ -55,9 +55,9 @@ class NotificationsTableViewController: UITableViewController {
     }
     
     @IBAction func done(_ sender: UIBarButtonItem) {
-        UserDefaults.standard.set(shouldRemind, forKey: "shouldRemind")
-        UserDefaults.standard.set(remindHours, forKey: "remindHours")
-        UserDefaults.standard.set(remindMinutes, forKey: "remindMinutes")
+        NSUbiquitousKeyValueStore.default.set(shouldRemind, forKey: "shouldRemind")
+        NSUbiquitousKeyValueStore.default.set(remindHours, forKey: "remindHours")
+        NSUbiquitousKeyValueStore.default.set(remindMinutes, forKey: "remindMinutes")
         hideDatePicker()
         ChecklistFunctions.shared.updateNotifications(in: data!)
         delegate?.notificationsTableViewControllerDidFinishEditingSettings(self)

@@ -18,13 +18,13 @@ struct PasscodeLockConfiguration: PasscodeLockConfigurationType {
     
     init(repository: PasscodeRepositoryType) {
         
-        self.isTouchIDAllowed = UserDefaults.standard.bool(forKey: "isTouchIDAllowed")
+        self.isTouchIDAllowed = NSUbiquitousKeyValueStore.default.bool(forKey: "isTouchIDAllowed")
         self.repository = repository
     }
     
     init() {
         
-        self.isTouchIDAllowed = UserDefaults.standard.bool(forKey: "isTouchIDAllowed")
+        self.isTouchIDAllowed = NSUbiquitousKeyValueStore.default.bool(forKey: "isTouchIDAllowed")
         self.repository = UserDefaultsPasscodeRepository()
     }
 }

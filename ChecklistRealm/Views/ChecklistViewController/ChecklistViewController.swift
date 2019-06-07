@@ -12,7 +12,7 @@ import RealmSwift
 class ChecklistViewController: UIViewController {
     
     @IBOutlet weak var checklistTableView: UITableView!
-    var data: Data?
+    var data: ChecklistData?
     var notificationToken: NotificationToken?
     private let firstLaunch = "firstLaunch"
     
@@ -23,23 +23,23 @@ class ChecklistViewController: UIViewController {
         
         let realm = ChecklistFunctions.shared.realm
         
-        if !UserDefaults.standard.bool(forKey: firstLaunch){
+        if !NSUbiquitousKeyValueStore.default.bool(forKey: firstLaunch){
             
             ChecklistFunctions.shared.createData()
-            UserDefaults.standard.set(true, forKey: firstLaunch)
+            NSUbiquitousKeyValueStore.default.set(true, forKey: firstLaunch)
             
         }
         
-        if UserDefaults.standard.bool(forKey: "shouldRemind") == false && UserDefaults.standard.integer(forKey: "remindHours") == 0 {
+        if NSUbiquitousKeyValueStore.default.bool(forKey: "shouldRemind") == false && NSUbiquitousKeyValueStore.default.longLong(forKey: "remindHours") == 0 {
             
-            UserDefaults.standard.set(true, forKey: "shouldRemind")
-            UserDefaults.standard.set(1, forKey: "remindHours")
-            UserDefaults.standard.set(0, forKey: "remindMinutes")
+            NSUbiquitousKeyValueStore.default.set(true, forKey: "shouldRemind")
+            NSUbiquitousKeyValueStore.default.set(1, forKey: "remindHours")
+            NSUbiquitousKeyValueStore.default.set(0, forKey: "remindMinutes")
         
         }
         
         
-        data = realm.objects(Data.self).first!
+        data = realm.objects(ChecklistData.self).first!
         ChecklistFunctions.shared.sortChecklistItems(in: data!)
         
         let secondTabNavController = self.tabBarController?.viewControllers![1] as! UINavigationController

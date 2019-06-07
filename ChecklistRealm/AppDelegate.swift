@@ -8,17 +8,24 @@
 
 import UIKit
 import UserNotifications
+import CloudKit
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var presenter: PasscodeLockPresenter?
+    var syncEngine: SyncEngine?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         window?.backgroundColor = UIColor.white
         ChecklistFunctions.shared.configureMigration()
+        setupNSUbiquitousKeyValueStoreObserver()
+        setupRealmDBObserver()
+        
+        application.registerForRemoteNotifications()
         
         let center = UNUserNotificationCenter.current()
         center.delegate = self
@@ -31,15 +38,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
-
-    func applicationWillResignActive(_ application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+    
+    func setupNSUbiquitousKeyValueStoreObserver(){
+         NotificationCenter.default.addObserver(self, selector: #selector(onUbiquitousKeyValueStoreDidChangeExternally(notification:)), name: NSUbiquitousKeyValueStore.didChangeExternallyNotification, object: NSUbiquitousKeyValueStore.default)
+    }
+    
+    func setupRealmDBObserver(){
+        syncEngine = SyncEngine(objects: [SyncObject<ChecklistItem>()], databaseScope: .private, container: CKContainer.init(identifier: "iCloud.testtasks"))
+    }
+    
+    @objc func onUbiquitousKeyValueStoreDidChangeExternally(notification:Notification)
+    {
+        NSUbiquitousKeyValueStore.default.synchronize()
+        if let changedKeys = notification.userInfo!["NSUbiquitousKeyValueStoreChangedKeysKey"] as? [String] {
+            if changedKeys.contains("shouldRemind") || changedKeys.contains("remindHours") || changedKeys.contains("remindMinutes"){
+                let realm = ChecklistFunctions.shared.realm
+                let data = realm.objects(ChecklistData.self).first!
+                ChecklistFunctions.shared.updateNotifications(in: data)
+            }
+        }
+        
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+       
         let configuration = PasscodeLockConfiguration()
         presenter = PasscodeLockPresenter(mainWindow: self.window,
                                           configuration: configuration,
@@ -58,7 +80,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        let dict = userInfo as! [String: NSObject]
+        let notification = CKNotification(fromRemoteNotificationDictionary: dict)
+        
+        if let subscriptionID = notification?.subscriptionID, IceCreamSubscription.allIDs.contains(subscriptionID) {
+            NotificationCenter.default.post(name: Notifications.cloudKitDataDidChangeRemotely.name, object: nil, userInfo: userInfo)
+        }
+        completionHandler(.newData)
+    }
 
 }
 

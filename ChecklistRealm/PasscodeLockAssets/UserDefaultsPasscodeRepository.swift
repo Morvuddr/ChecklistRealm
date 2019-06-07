@@ -10,12 +10,7 @@ import Foundation
 
 class UserDefaultsPasscodeRepository: PasscodeRepositoryType {
     
-    fileprivate let passcodeKey = "passcode.lock.passcode"
-    
-    fileprivate lazy var defaults: UserDefaults = {
-        
-        return UserDefaults.standard
-    }()
+    fileprivate let passcodeKey = "passcode"
     
     var hasPasscode: Bool {
         
@@ -28,18 +23,18 @@ class UserDefaultsPasscodeRepository: PasscodeRepositoryType {
     
     var passcode: [String]? {
         
-        return defaults.value(forKey: passcodeKey) as? [String] ?? nil
+        return NSUbiquitousKeyValueStore.default.array(forKey: passcodeKey) as? [String] ?? nil
     }
     
     func savePasscode(_ passcode: [String]) {
         
-        defaults.set(passcode, forKey: passcodeKey)
-        defaults.synchronize()
+        NSUbiquitousKeyValueStore.default.set(passcode, forKey: passcodeKey)
+        
     }
     
     func deletePasscode() {
         
-        defaults.removeObject(forKey: passcodeKey)
-        defaults.synchronize()
+        NSUbiquitousKeyValueStore.default.removeObject(forKey: passcodeKey)
+        
     }
 }
