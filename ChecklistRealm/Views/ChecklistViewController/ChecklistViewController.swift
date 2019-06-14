@@ -120,9 +120,27 @@ extension ChecklistViewController: UITableViewDelegate, UITableViewDataSource, C
         return cell
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        ChecklistFunctions.shared.removeNotification(forItemAt: indexPath.row, in: data!)
-        ChecklistFunctions.shared.deleteChecklistItem(at: indexPath.row, in: data!)
+
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = UIContextualAction(style: .destructive, title: "Удалить") { (contextualAction, view, actionPerfomed: @escaping (Bool) -> ()) in
+            
+            let alert = UIAlertController(title: "Удаление задачи", message: "Вы уверены, что хотите удалить задачу: \(self.data!.checklistItems[indexPath.row].title) ?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: { (alertAction) in
+                actionPerfomed(false)
+            }))
+            alert.addAction(UIAlertAction(title: "Удалить", style: .destructive, handler: { (alertAction) in
+                // Perform delete
+                ChecklistFunctions.shared.removeNotification(forItemAt: indexPath.row, in: self.data!)
+                ChecklistFunctions.shared.deleteChecklistItem(at: indexPath.row, in: self.data!)
+                actionPerfomed(true)
+            }))
+            
+            self.present(alert, animated: true, completion: nil)
+            
+        }
+        
+        return UISwipeActionsConfiguration(actions: [delete])
+        
     }
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
