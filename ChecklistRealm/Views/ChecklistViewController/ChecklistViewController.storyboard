@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Foi-cA-a4l">
-    <device id="retina5_5" orientation="portrait">
+    <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,72 +15,71 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ChecklistViewController" customModule="ChecklistRealm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TP0-g8-crw">
-                                <rect key="frame" x="0.0" y="116" width="414" height="571"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ChecklistTableViewCell" rowHeight="100" id="DCt-TX-X0j" customClass="ChecklistTableViewCell" customModule="ChecklistRealm" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" accessoryType="detailButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ChecklistTableViewCell" rowHeight="100" id="DCt-TX-X0j" customClass="ChecklistTableViewCell" customModule="ChecklistRealm" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DCt-TX-X0j" id="cbz-v2-jw0">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="99.666666666666671"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="362" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bzX-c7-oTD">
-                                                    <rect key="frame" x="36" y="11" width="290" height="23"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="23" id="tFl-9m-lfe"/>
-                                                    </constraints>
+                                                    <rect key="frame" x="58" y="11" width="296" height="23"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="✔︎" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l1c-Jk-gJH">
-                                                    <rect key="frame" x="8" y="0.0" width="20" height="99.666666666666671"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="20" id="efK-na-eiY"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zdi-F5-oAo">
-                                                    <rect key="frame" x="36" y="34" width="290" height="17"/>
+                                                    <rect key="frame" x="58" y="34" width="296" height="17"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="17" id="vaS-FY-UZ9"/>
+                                                        <constraint firstAttribute="height" constant="17" id="HqZ-Ut-fNo"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="El6-k8-xgA">
-                                                    <rect key="frame" x="36" y="51" width="290" height="38"/>
+                                                    <rect key="frame" x="58" y="51" width="296" height="38"/>
                                                     <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="38" id="oNm-Ov-AfO"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5NG-s4-EcV">
+                                                    <rect key="frame" x="10" y="33.5" width="33" height="33"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="33" id="cRF-9v-171"/>
+                                                        <constraint firstAttribute="height" constant="33" id="uaG-hI-vT3"/>
+                                                    </constraints>
+                                                    <state key="normal" image="ButtonIsOff"/>
+                                                    <state key="selected" image="ButtonIsOn"/>
+                                                    <connections>
+                                                        <action selector="checkmarkButtonTapped:" destination="DCt-TX-X0j" eventType="touchUpInside" id="WwX-8r-pH7"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="bzX-c7-oTD" secondAttribute="trailing" constant="8" id="4R9-5U-OYO"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="zdi-F5-oAo" secondAttribute="trailing" constant="8" id="5I2-e1-xvq"/>
-                                                <constraint firstItem="l1c-Jk-gJH" firstAttribute="height" secondItem="cbz-v2-jw0" secondAttribute="height" id="8PJ-gQ-sS9"/>
-                                                <constraint firstItem="El6-k8-xgA" firstAttribute="leading" secondItem="l1c-Jk-gJH" secondAttribute="trailing" constant="8" id="9Kn-mM-wz5"/>
-                                                <constraint firstAttribute="bottom" secondItem="l1c-Jk-gJH" secondAttribute="bottom" id="E2H-CG-Gbd"/>
-                                                <constraint firstItem="zdi-F5-oAo" firstAttribute="leading" secondItem="l1c-Jk-gJH" secondAttribute="trailing" constant="8" id="Kpo-ht-jdX"/>
-                                                <constraint firstItem="l1c-Jk-gJH" firstAttribute="leading" secondItem="cbz-v2-jw0" secondAttribute="leading" constant="8" id="N1F-Pu-H0p"/>
-                                                <constraint firstItem="zdi-F5-oAo" firstAttribute="leading" secondItem="bzX-c7-oTD" secondAttribute="leading" id="OGe-Oh-kvU"/>
-                                                <constraint firstItem="bzX-c7-oTD" firstAttribute="leading" secondItem="l1c-Jk-gJH" secondAttribute="trailing" constant="8" id="PMq-ZQ-gta"/>
-                                                <constraint firstItem="bzX-c7-oTD" firstAttribute="top" secondItem="cbz-v2-jw0" secondAttribute="topMargin" id="Uzw-aD-Hi4"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="El6-k8-xgA" secondAttribute="bottom" id="Yjx-XF-K5h"/>
-                                                <constraint firstItem="zdi-F5-oAo" firstAttribute="top" secondItem="bzX-c7-oTD" secondAttribute="bottom" id="dQt-9R-qEz"/>
-                                                <constraint firstItem="El6-k8-xgA" firstAttribute="leading" secondItem="bzX-c7-oTD" secondAttribute="leading" id="dgI-rV-W7R"/>
-                                                <constraint firstItem="El6-k8-xgA" firstAttribute="top" secondItem="zdi-F5-oAo" secondAttribute="bottom" id="dyo-ET-5vL"/>
-                                                <constraint firstItem="l1c-Jk-gJH" firstAttribute="top" secondItem="cbz-v2-jw0" secondAttribute="top" id="eSj-lm-X8q"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="El6-k8-xgA" secondAttribute="trailing" constant="8" id="oXX-Kb-fGj"/>
+                                                <constraint firstItem="bzX-c7-oTD" firstAttribute="leading" secondItem="cbz-v2-jw0" secondAttribute="leadingMargin" constant="38" id="2hz-7J-Hyy"/>
+                                                <constraint firstItem="zdi-F5-oAo" firstAttribute="top" secondItem="bzX-c7-oTD" secondAttribute="bottom" id="4tM-UR-NNa"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="El6-k8-xgA" secondAttribute="trailing" id="BrB-38-kpf"/>
+                                                <constraint firstItem="bzX-c7-oTD" firstAttribute="top" secondItem="cbz-v2-jw0" secondAttribute="topMargin" id="IFg-dT-I4f"/>
+                                                <constraint firstItem="El6-k8-xgA" firstAttribute="bottom" secondItem="cbz-v2-jw0" secondAttribute="bottomMargin" id="K9Z-uw-wFb"/>
+                                                <constraint firstItem="zdi-F5-oAo" firstAttribute="trailing" secondItem="cbz-v2-jw0" secondAttribute="trailingMargin" id="ZtQ-Pe-deg"/>
+                                                <constraint firstItem="bzX-c7-oTD" firstAttribute="trailing" secondItem="cbz-v2-jw0" secondAttribute="trailingMargin" id="dbc-90-Xq7"/>
+                                                <constraint firstItem="zdi-F5-oAo" firstAttribute="leading" secondItem="El6-k8-xgA" secondAttribute="leading" id="fUd-ok-c2F"/>
+                                                <constraint firstItem="5NG-s4-EcV" firstAttribute="centerY" secondItem="cbz-v2-jw0" secondAttribute="centerY" id="iSS-X5-9ek"/>
+                                                <constraint firstItem="El6-k8-xgA" firstAttribute="top" secondItem="zdi-F5-oAo" secondAttribute="bottom" id="pHJ-7m-2cQ"/>
+                                                <constraint firstItem="zdi-F5-oAo" firstAttribute="leading" secondItem="bzX-c7-oTD" secondAttribute="leading" id="sYy-Pq-QrO"/>
+                                                <constraint firstItem="5NG-s4-EcV" firstAttribute="leading" secondItem="cbz-v2-jw0" secondAttribute="leading" constant="10" id="y3L-1m-MNZ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -88,7 +87,7 @@
                                             <outlet property="checklistAdditionalInfo" destination="El6-k8-xgA" id="wPd-ij-NQn"/>
                                             <outlet property="checklistDate" destination="zdi-F5-oAo" id="6Ib-fh-1C8"/>
                                             <outlet property="checklistTitle" destination="bzX-c7-oTD" id="EpU-mG-yGY"/>
-                                            <outlet property="checkmark" destination="l1c-Jk-gJH" id="Rcv-cP-XBC"/>
+                                            <outlet property="checkmarkButton" destination="5NG-s4-EcV" id="tXQ-kB-6N3"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -126,7 +125,7 @@
                     <tabBarItem key="tabBarItem" title="Задачи" image="checklist" id="rR3-4v-LuP"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="JPP-9U-Txz">
-                        <rect key="frame" x="0.0" y="20" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="largeTitleTextAttributes">
                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -177,7 +176,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="checklist" width="22" height="25.333333969116211"/>
+        <image name="ButtonIsOff" width="128" height="128"/>
+        <image name="ButtonIsOn" width="128" height="128"/>
+        <image name="checklist" width="23" height="25.5"/>
         <image name="settings" width="25" height="25"/>
     </resources>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

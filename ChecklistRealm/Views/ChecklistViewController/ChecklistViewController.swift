@@ -104,7 +104,7 @@ class ChecklistViewController: UIViewController {
     
 }
 
-extension ChecklistViewController: UITableViewDelegate, UITableViewDataSource {
+extension ChecklistViewController: UITableViewDelegate, UITableViewDataSource, ChecklistTableViewCellDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -114,8 +114,8 @@ extension ChecklistViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ChecklistTableViewCell.identifier) as! ChecklistTableViewCell
-        
-        cell.setup(data!.checklistItems[indexPath.row])
+        cell.delegate = self
+        cell.setup(data!.checklistItems[indexPath.row], indexPath.row)
         
         return cell
     }
@@ -125,16 +125,17 @@ extension ChecklistViewController: UITableViewDelegate, UITableViewDataSource {
         ChecklistFunctions.shared.deleteChecklistItem(at: indexPath.row, in: data!)
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-        ChecklistFunctions.shared.toggleChecked(at: indexPath.row, in: data!)
-        if (data?.checklistItems[indexPath.row].checked)! {
-            ChecklistFunctions.shared.removeNotification(forItemAt: indexPath.row, in: data!)
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        return nil
+    }
+    
+    func checkmarkButtonTapped(in index: Int) {
+        ChecklistFunctions.shared.toggleChecked(at: index, in: data!)
+        if (data?.checklistItems[index].checked)! {
+            ChecklistFunctions.shared.removeNotification(forItemAt: index, in: data!)
         } else {
-            ChecklistFunctions.shared.scheduleNotification(forItemAt: indexPath.row, in: data!)
+            ChecklistFunctions.shared.scheduleNotification(forItemAt: index, in: data!)
         }
-        tableView.deselectRow(at: indexPath, animated: true)
-        
     }
     
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
