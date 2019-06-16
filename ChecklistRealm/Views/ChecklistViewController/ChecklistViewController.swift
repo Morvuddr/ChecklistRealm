@@ -132,7 +132,7 @@ extension ChecklistViewController: UITableViewDelegate, UITableViewDataSource, C
                 // Perform delete
                 ChecklistFunctions.shared.removeNotification(forItemAt: indexPath.row, in: self.data!)
                 ChecklistFunctions.shared.deleteChecklistItem(at: indexPath.row, in: self.data!)
-                actionPerfomed(true)
+                actionPerfomed(false)
             }))
             
             self.present(alert, animated: true, completion: nil)
@@ -147,8 +147,10 @@ extension ChecklistViewController: UITableViewDelegate, UITableViewDataSource, C
         return nil
     }
     
-    func checkmarkButtonTapped(in index: Int) {
+    func checkmarkButtonTapped(at checklistItem: ChecklistItem) {
+        let index = (data?.checklistItems.firstIndex(of: checklistItem))!
         ChecklistFunctions.shared.toggleChecked(at: index, in: data!)
+        
         if (data?.checklistItems[index].checked)! {
             ChecklistFunctions.shared.removeNotification(forItemAt: index, in: data!)
         } else {

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ChecklistTableViewCellDelegate: class {
-    func checkmarkButtonTapped(in index: Int)
+    func checkmarkButtonTapped(at item: ChecklistItem)
 }
 
 class ChecklistTableViewCell: UITableViewCell {
@@ -20,9 +20,10 @@ class ChecklistTableViewCell: UITableViewCell {
     @IBOutlet weak var checklistDate: UILabel!
     
     weak var delegate: ChecklistTableViewCellDelegate?
+    var checklistItem: ChecklistItem?
     
     func setup(_ checklistItem: ChecklistItem, _ index: Int){
-        checkmarkButton.tag = index
+        self.checklistItem = checklistItem
         self.checkmarkButton.addTarget(self, action: #selector(checkmarkButtonTapped(_:)), for: .touchUpInside)
         checklistTitle.text = checklistItem.title
         checklistDate.text = ChecklistFunctions.shared.createStringFromDate(checklistItem.date)
@@ -48,7 +49,7 @@ class ChecklistTableViewCell: UITableViewCell {
     @IBAction func checkmarkButtonTapped(_ sender: UIButton){
         
         if let delegate = delegate {
-            delegate.checkmarkButtonTapped(in: checkmarkButton.tag)
+            delegate.checkmarkButtonTapped(at: checklistItem!)
         }
         
     }

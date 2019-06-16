@@ -167,8 +167,6 @@ class ChecklistFunctions {
             newChecklistItem?["longitude"] = Double(0)
         }
         migration.enumerateObjects(ofType: "Data") { (oldData, newData) in
-//            newData?["isDeleted"] = false
-//            newData?["dataID"] = UUID().uuidString
             let newChecklistData = migration.create(ChecklistData.className())
             newChecklistData["isDeleted"] = false
             newChecklistData["dataID"] = UUID().uuidString

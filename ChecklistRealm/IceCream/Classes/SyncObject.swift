@@ -88,17 +88,20 @@ extension SyncObject: Syncable {
             self.realm.beginWrite()
             let data = self.realm.objects(ChecklistData.self).first!
             var isExist = false
-            for i in 0..<data.checklistItems.count {
-                if data.checklistItems[i].itemID == (object as! ChecklistItem).itemID {
-                    data.checklistItems[i].title = (object as! ChecklistItem).title
-                    data.checklistItems[i].additionalInfo = (object as! ChecklistItem).additionalInfo
-                    data.checklistItems[i].dueDate = (object as! ChecklistItem).dueDate
-                    data.checklistItems[i].shouldRemind = (object as! ChecklistItem).shouldRemind
-                    data.checklistItems[i].checked = (object as! ChecklistItem).checked
-                    ChecklistFunctions.shared.scheduleNotification(forItemAt: i, in: data)
-                    isExist = true
-                }
+            let index = data.checklistItems.firstIndex(){
+                $0.itemID == (object as! ChecklistItem).itemID
             }
+            
+            if let i = index {
+                data.checklistItems[i].title = (object as! ChecklistItem).title
+                data.checklistItems[i].additionalInfo = (object as! ChecklistItem).additionalInfo
+                data.checklistItems[i].dueDate = (object as! ChecklistItem).dueDate
+                data.checklistItems[i].shouldRemind = (object as! ChecklistItem).shouldRemind
+                data.checklistItems[i].checked = (object as! ChecklistItem).checked
+                ChecklistFunctions.shared.scheduleNotification(forItemAt: i, in: data)
+                isExist = true
+            }
+            
             if !isExist {
                 data.checklistItems.insert((object as! ChecklistItem), at: 0)
                 ChecklistFunctions.shared.scheduleNotification(forItemAt: 0, in: data)
@@ -150,18 +153,18 @@ extension SyncObject: Syncable {
     }
     
     public func cleanUp() {
-        let objects = realm.objects(T.self).filter { $0.isDeleted }
-        
-        var tokens: [NotificationToken] = []
-        notificationToken.flatMap { tokens = [$0] }
-        
-        realm.beginWrite()
-        objects.forEach({ realm.delete($0) })
-        do {
-            try realm.commitWrite(withoutNotifying: tokens)
-        } catch {
-            // Error handles here
-        }
+//        let objects = realm.objects(T.self).filter { $0.isDeleted }
+//
+//        var tokens: [NotificationToken] = []
+//        notificationToken.flatMap { tokens = [$0] }
+//
+//        //realm.beginWrite()
+//        objects.forEach({ realm.delete($0) })
+//        do {
+//            try realm.commitWrite(withoutNotifying: tokens)
+//        } catch {
+//            // Error handles here
+//        }
     }
     
     public func pushLocalObjectsToCloudKit() {

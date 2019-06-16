@@ -292,7 +292,7 @@ extension AddItemTableViewController: UITextFieldDelegate {
         let oldText = textField.text!
         let stringRange = Range(range, in:oldText)!
         let newText = oldText.replacingCharacters(in: stringRange, with: string)
-        if newText.isEmpty || newText.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).isEmpty || additionalInfoTextView.text.isEmpty {
+        if newText.isEmpty || newText.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).isEmpty || additionalInfoTextView.text.isEmpty || additionalInfoTextView.text.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).isEmpty {
             doneBarItem.isEnabled = false
         } else {
             doneBarItem.isEnabled = true
@@ -320,7 +320,7 @@ extension AddItemTableViewController: UITextViewDelegate {
         let oldText = textView.text!
         let stringRange = Range(range, in:oldText)!
         let newText = oldText.replacingCharacters(in: stringRange, with: text)
-        if newText.isEmpty || newText.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).isEmpty || titleTextField.text?.isEmpty ?? true {
+        if newText.isEmpty || newText.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).isEmpty || titleTextField.text?.isEmpty ?? true || titleTextField.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).isEmpty ?? true {
             doneBarItem.isEnabled = false
         } else {
             doneBarItem.isEnabled = true
